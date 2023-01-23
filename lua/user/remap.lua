@@ -54,10 +54,11 @@ map('n', '<leader>s', ':so<cr>', opts)
 --Telescope
 themes = require('telescope.themes')
 builtin = require('telescope.builtin')
-compact_dropdown = themes.get_dropdown{previewer = false}
+compact_dropdown = themes.get_dropdown{previewer = false, hidden = true}
 extensions = require('telescope').extensions
 
-map('n', '<C-p>', ":lua builtin.fd(compact_dropdown)<cr>", opts)
+map('n', '<C-p>', ":lua builtin.git_files(compact_dropdown)<cr>", opts)
+map('n', '<M-p>', ":lua builtin.fd(compact_dropdown)<cr>", opts)
 map('n', '<C-n>', ":Telescope builtin<cr>", opts)
 map('n', '<C-g>', ":lua builtin.live_grep(themes.get_ivy())<cr>", opts)
 map('n', '<C-f>', ":lua extensions.frecency.frecency(compact_dropdown)<cr>", opts)
