@@ -86,6 +86,10 @@ local plugins = {
 		event = 'InsertEnter',
 		config = true,
 	},
+	{
+		'kdheepak/lazygit.nvim',
+		cmd = {"LazyGit", "LazyGitConfig"},
+	},
 
 	--LSP
 	{ 'neovim/nvim-lspconfig',
