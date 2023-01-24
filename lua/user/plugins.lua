@@ -90,6 +90,13 @@ local plugins = {
 		'kdheepak/lazygit.nvim',
 		cmd = {"LazyGit", "LazyGitConfig"},
 	},
+	{
+		'jose-elias-alvarez/null-ls.nvim',
+		event = "VeryLazy", 
+		config = function ()
+			require("user.lsp.null-ls")
+		end
+	},
 
 	--LSP
 	{ 'neovim/nvim-lspconfig',
