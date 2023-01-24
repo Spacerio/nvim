@@ -28,12 +28,18 @@ local function lsp_attach(client, bufnr)
 end
 
 local lspconfig = require('lspconfig')
+
 require('mason-lspconfig').setup_handlers({
 	function(server_name)
-		lspconfig[server_name].setup({
+		local opts = {
 			on_attach = lsp_attach,
 			capabilities = lsp_capabilities,
-		})
+		}
+		local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+		if has_custom_opts then
+			opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
+		end
+		lspconfig[server_name].setup(opts)
 	end,
 })
 
