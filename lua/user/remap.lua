@@ -52,6 +52,9 @@ map('n', '<C-u>', '<C-u>zz', opts)
 --Source files wih keymap
 map('n', '<leader>s', ':so<cr>', opts)
 
+--Format on keymap 
+map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+
 --Telescope
 themes = require('telescope.themes')
 builtin = require('telescope.builtin')
