@@ -1,10 +1,13 @@
 require('mason').setup()
+require("mason-lspconfig").setup{
+	ensure_installed = { "sumneko_lua", "rust_analyzer" },
+}
 
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lsp_remaps = function(bufnr)
 	local map = function(m, lhs, rhs)
-		local opts = {remap = true, silent = true, buffer = bufnr}
+		local opts = { remap = true, silent = true, buffer = bufnr }
 		vim.keymap.set(m, lhs, rhs, opts)
 	end
 
@@ -34,11 +37,8 @@ require('mason-lspconfig').setup_handlers({
 		local opts = {
 			on_attach = lsp_attach,
 			capabilities = lsp_capabilities,
+			autostart = true,
 		}
-		local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server_name)
-		if has_custom_opts then
-			opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
-		end
 		lspconfig[server_name].setup(opts)
 	end,
 })
@@ -54,7 +54,7 @@ for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-local config = {
+vim.diagnostic.config({
 	virtual_text = false,
 	signs = {
 		active = signs,
@@ -70,9 +70,7 @@ local config = {
 		header = "",
 		prefix = "",
 	},
-}
-
-vim.diagnostic.config(config)
+})
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "rounded",
