@@ -5,6 +5,12 @@ local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
 
 local sources = {
-	formatting.stylua,
-	formatting.prettier
+	formatting.stylua.with({
+		extra_args = { "--config-path ~/.stylua.toml" },
+	}),
+	formatting.prettier,
 }
+
+null_ls.setup({
+	sources = sources,
+})
