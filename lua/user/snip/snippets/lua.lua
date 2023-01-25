@@ -25,8 +25,6 @@ local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 
 local snippets = {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	s(
 		"map",
 		fmt(
@@ -34,12 +32,6 @@ local snippets = {
 			{ i(1, "map"), i(2, "action") }
 		)
 	),
-=======
-	s("map", {t("map()")})
->>>>>>> 953c196... Add snippets folder
-=======
-	s("map", {t("map()")})
->>>>>>> lsp
 }
 
 return snippets
