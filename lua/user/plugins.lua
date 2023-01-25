@@ -97,6 +97,10 @@ local plugins = {
 			require("user.lsp.null-ls")
 		end
 	},
+	{
+		'lukas-reineke/lsp-format.nvim',
+		config = true,
+	},
 
 	--LSP
 	{ 'neovim/nvim-lspconfig',

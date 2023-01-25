@@ -26,6 +26,7 @@ local parse = require("luasnip.util.parser").parse_snippet
 
 local snippets = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	s(
 		"map",
 		fmt(
@@ -36,6 +37,9 @@ local snippets = {
 =======
 	s("map", {t("map()")})
 >>>>>>> 953c196... Add snippets folder
+=======
+	s("map", {t("map()")})
+>>>>>>> lsp
 }
 
 return snippets
