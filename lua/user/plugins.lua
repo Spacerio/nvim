@@ -101,10 +101,14 @@ local plugins = {
 		'lukas-reineke/lsp-format.nvim',
 		config = true,
 	},
+	{
+		'christoomey/vim-tmux-navigator',
+		lazy = false,
+	},
 
 	--LSP
 	{ 'neovim/nvim-lspconfig',
-		event = 'VeryLazy',
+		lazy = false,
 		config = function()
 			require('user.lsp')
 		end,

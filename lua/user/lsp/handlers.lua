@@ -32,15 +32,28 @@ end
 
 local lspconfig = require('lspconfig')
 
+local opts = {
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+	autostart = true,
+	single_file_support = true,
+}
+
 require('mason-lspconfig').setup_handlers({
 	function(server_name)
-		local opts = {
-			on_attach = lsp_attach,
-			capabilities = lsp_capabilities,
-			autostart = true,
-		}
+		local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+		if has_custom_opts then 
+		    opts = vim.tbl_deep_extend("force", opts, custom_opts)
+		end
 		lspconfig[server_name].setup(opts)
 	end,
+	["bashls"] = function(server_name)
+		lspconfig.bashls.setup {
+			on_attach = lsp_attach,
+			capabilities = lsp_capabilities,
+			filetypes = {'bash', 'zsh'},
+		}
+	end
 })
 
 local signs = {
