@@ -27,12 +27,6 @@ local plugins = {
 		config = function ()
 			require('user.plugins.telescope')
 		end,
-		dependencies = {
-			{
-			'nvim-telescope/telescope-frecency.nvim',
-			dependencies = { "kkharji/sqlite.lua" }
-			}
-		}
 	},
 	{ 'nvim-tree/nvim-web-devicons' },
 	{ 'muniftanjim/nui.nvim' },
