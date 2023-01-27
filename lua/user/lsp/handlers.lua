@@ -56,6 +56,13 @@ require('mason-lspconfig').setup_handlers({
 	end
 })
 
+require("lspconfig").asm_lsp.setup{
+	on_attach = lsp_attach,
+	capabilities = lsp_capabilities,
+	cmd = { "asm-lsp" },
+	single_file_support = true,
+}
+
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
 	{ name = "DiagnosticSignWarn", text = "" },
@@ -94,3 +101,4 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 	width = 60,
 })
+
