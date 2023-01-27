@@ -9,7 +9,7 @@ local plugins = {
 		priority = 1000,
 		config = function()
 			require('user.color')
-			color("catppuccin")
+			color("catppuccin", true)
 		end,
 	},
 	{
