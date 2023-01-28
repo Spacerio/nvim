@@ -24,7 +24,7 @@ local plugins = {
 	{
 		'nvim-telescope/telescope.nvim',
 		event = "VeryLazy",
-		config = function ()
+		config = function()
 			require('user.plugins.telescope')
 		end,
 	},
@@ -52,7 +52,7 @@ local plugins = {
 	{
 		'nvim-lualine/lualine.nvim',
 		event = "VeryLazy",
-		config = function ()
+		config = function()
 			require('user.plugins.lualine')
 		end
 	},
@@ -82,12 +82,12 @@ local plugins = {
 	},
 	{
 		'kdheepak/lazygit.nvim',
-		cmd = {"LazyGit", "LazyGitConfig"},
+		cmd = { "LazyGit", "LazyGitConfig" },
 	},
 	{
 		'jose-elias-alvarez/null-ls.nvim',
-		event = "VeryLazy", 
-		config = function ()
+		event = "VeryLazy",
+		config = function()
 			require("user.lsp.null-ls")
 		end
 	},
@@ -98,6 +98,17 @@ local plugins = {
 	{
 		'christoomey/vim-tmux-navigator',
 		lazy = false,
+	},
+	{
+		'jay-babu/mason-nvim-dap.nvim',
+		lazy = false,
+	},
+	{
+		'natecraddock/sessions.nvim',
+		lazy = false,
+		config = function()
+			require("user.plugins.sessions")
+		end,
 	},
 
 	--LSP

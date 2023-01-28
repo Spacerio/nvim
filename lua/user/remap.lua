@@ -48,9 +48,8 @@ map('n', '<M-j><M-y>', ':lua require("harpoon.tmux").gotoTerminal(6)<cr>', opts)
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
-
---Source files wih keymap
-map('n', '<leader>s', ':so<cr>', opts)
+--Quit neovim, only userful really with sessions
+map('', '<leader>q', '<cmd>qa!<cr>', opts)
 
 --Format on keymap 
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
