@@ -23,6 +23,9 @@ map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 
+--Switch ` and '
+map('n', '\'', '`', opts)
+
 --harpoon
 map('n', '<M-j><M-i>', ':lua require("harpoon.mark").add_file()<cr>', opts)
 map('n', '<M-u>', ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
@@ -54,6 +57,9 @@ map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 --Format on keymap
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
 
+-- Delete other buffers
+map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> \`t', opts)
+
 --Telescope
 themes = require('telescope.themes')
 builtin = require('telescope.builtin')
@@ -65,22 +71,6 @@ map('n', '<M-p>', ":lua builtin.fd(compact_dropdown)<cr>", opts)
 map('n', '<C-n>', ":Telescope builtin<cr>", opts)
 map('n', '<C-g>', ":lua builtin.live_grep(themes.get_ivy())<cr>", opts)
 map('n', '<C-f>', ":lua extensions.frecency.frecency(compact_dropdown)<cr>", opts)
-
-----Lsp
---map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', remap)
---map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', remap)
---map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', remap)
---map('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<cr>', remap)
---map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', remap)
---map('n', 'gr', '<cmd>lua builtin.lsp_references()<cr>', remap)
-----map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', remap)
---map('n', 'gh', '<cmd>lua vim.lsp.buf.rename()<cr>', remap)
---map('n', '<gs>', '<cmd>lua vim.lsp.buf.code_action()<cr>', remap)
---map('x', '<gs>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', remap)
----- Diagnostics
---map('n', 'gl', '<cmd>TroubleToggle<cr>', remap)
---map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', remap) 
---map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', remap)
 
 --Unbind visual K
 map('v', 'K', '', opts)
