@@ -110,6 +110,15 @@ local plugins = {
 			require("user.plugins.sessions")
 		end,
 	},
+	{
+		'skywind3000/asyncrun.vim',
+		cmd = "AsyncRun",
+	},
+	{
+		'mfussenegger/nvim-dap',
+		lazy = false,
+		setup = true,
+	},
 
 	--LSP
 	{ 'neovim/nvim-lspconfig',
@@ -118,7 +127,7 @@ local plugins = {
 			require('user.lsp')
 		end,
 		dependencies = {
-			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason.nvim', },
 			{ 'williamboman/mason-lspconfig.nvim' },
 		}
 	},

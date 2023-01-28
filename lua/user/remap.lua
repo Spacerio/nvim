@@ -49,9 +49,9 @@ map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
 --Quit neovim, only userful really with sessions
-map('', '<leader>q', '<cmd>qa!<cr>', opts)
+map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
---Format on keymap 
+--Format on keymap
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
 
 --Telescope

@@ -1,5 +1,6 @@
 require('mason').setup()
-require("mason-lspconfig").setup{
+
+require("mason-lspconfig").setup {
 	ensure_installed = { "sumneko_lua", "rust_analyzer" },
 }
 
@@ -42,8 +43,8 @@ local opts = {
 require('mason-lspconfig').setup_handlers({
 	function(server_name)
 		local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
-		if has_custom_opts then 
-		    opts = vim.tbl_deep_extend("force", opts, custom_opts)
+		if has_custom_opts then
+			opts = vim.tbl_deep_extend("force", opts, custom_opts)
 		end
 		lspconfig[server_name].setup(opts)
 	end,
@@ -51,12 +52,12 @@ require('mason-lspconfig').setup_handlers({
 		lspconfig.bashls.setup {
 			on_attach = lsp_attach,
 			capabilities = lsp_capabilities,
-			filetypes = {'bash', 'zsh'},
+			filetypes = { 'bash', 'zsh' },
 		}
 	end
 })
 
-require("lspconfig").asm_lsp.setup{
+require("lspconfig").asm_lsp.setup {
 	on_attach = lsp_attach,
 	capabilities = lsp_capabilities,
 	cmd = { "asm-lsp" },
@@ -101,4 +102,3 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 	width = 60,
 })
-
