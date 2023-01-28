@@ -129,6 +129,7 @@ local plugins = {
 		dependencies = {
 			{ 'williamboman/mason.nvim', },
 			{ 'williamboman/mason-lspconfig.nvim' },
+			{ 'simrat39/rust-tools.nvim' },
 		}
 	},
 	{ 'hrsh7th/nvim-cmp',

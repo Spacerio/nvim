@@ -4,6 +4,8 @@ require("mason-lspconfig").setup {
 	ensure_installed = { "sumneko_lua", "rust_analyzer" },
 }
 
+local rt = require("rust-tools")
+
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lsp_remaps = function(bufnr)
@@ -101,4 +103,23 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
 	width = 60,
+})
+
+local extension_path = vim.env.HOME .. '.vadimcn.vscode-lldb-1.8.1/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.lib'
+
+rt.setup({
+	server = {
+		on_attach = function(client, bufnr)
+			lsp_attach(client, bufnr)
+			vim.keymap.set('n', 'gs', rt.hover_actions.hover_actions, { remap = true, buffer = bufnr })
+		end,
+		standalone = true,
+	},
+	dap = {
+		adapter = require("rust-tools.dap").get_codelldb_adapter(
+			codelldb_path, liblldb_path
+		)
+	},
 })
