@@ -66,14 +66,12 @@ local plugins = {
 		dependencies = {
 			{
 				'rcarriga/nvim-notify',
-				config = { background_colour = '#000000' }
 			},
 		}
 	},
 	{
 		'theprimeagen/harpoon',
 		event = "VeryLazy",
-		--config = require("user.plugins.harpoon")
 	},
 	{
 		'ray-x/lsp_signature.nvim',
@@ -100,10 +98,6 @@ local plugins = {
 		lazy = false,
 	},
 	{
-		'jay-babu/mason-nvim-dap.nvim',
-		lazy = false,
-	},
-	{
 		'natecraddock/sessions.nvim',
 		lazy = false,
 		config = function()
@@ -118,6 +112,29 @@ local plugins = {
 		'mfussenegger/nvim-dap',
 		lazy = false,
 		setup = true,
+		dependencies = {
+			{
+				'rcarriga/nvim-dap-ui',
+				config = true,
+			},
+			{ 
+				'jay-babu/mason-nvim-dap.nvim'
+			},
+		},
+	},
+	{
+		'numToStr/Comment.nvim',
+		event = 'VeryLazy',
+		config = true,
+	},
+	{
+		'kylechui/nvim-surround',
+		event = 'VeryLazy',
+		config = true,
+	},
+	{
+		'theprimeagen/vim-be-good',
+		cmd = "VimBeGood",
 	},
 
 	--LSP
@@ -153,6 +170,3 @@ local plugins = {
 }
 
 return plugins
-
-
---NOTE: plugin defined keymaps don't work for now, don't know why.

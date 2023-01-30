@@ -23,6 +23,10 @@ map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 
+-- Better indent, stay in visual
+map('v', '>', '>gv', opts)
+map('v', '<', '<gv', opts)
+
 --Switch ` and '
 map('n', '\'', '`', opts)
 
@@ -46,6 +50,17 @@ map('n', '<M-j><M-r>', ':lua require("harpoon.tmux").gotoTerminal(4)<cr>', opts)
 map('n', '<M-j><M-t>', ':lua require("harpoon.tmux").gotoTerminal(5)<cr>', opts)
 map('n', '<M-j><M-y>', ':lua require("harpoon.tmux").gotoTerminal(6)<cr>', opts)
 
+-- Dap keymaps
+map('n', '<leader>b', ':lua require("dap").toggle_breakpoint()<cr>', opts)
+map('n', '<F5>', ':lua require("dap").continue()<cr>', opts)
+map('n', '<F10>', ':lua require("dap").step_over()<cr>', opts)
+map('n', '<F11>', ':lua require("dap").step_into()<cr>', opts)
+map('n', '<F12>', ':lua require("dap").step_out()<cr>', opts)
+map('n', '<leader>rp', ':lua require("dap").repl.open()<cr>', opts)
+map('n', '<leader>re', ':lua require("dap").terminate()<cr>', opts)
+map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
+map('n', '<leader>rn', ':RustRunnables<cr>', opts)
+map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
 
 --Better C-u and C-d
 map('n', '<C-d>', '<C-d>zz', opts)
@@ -58,7 +73,7 @@ map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
 
 -- Delete other buffers
-map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> \`t', opts)
+map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
 
 --Telescope
 themes = require('telescope.themes')
