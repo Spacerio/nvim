@@ -28,10 +28,30 @@ local snippets = {
 	s(
 		"map",
 		fmt(
-			"map('', '{}', '{}', opts)",
-			{ i(1, "map"), i(2, "action") }
+			"map('{}', '{}', '{}', opts)",
+			{
+				c(3, {
+					t("n"),
+					t("i"),
+					i(1)
+				}),
+				c(1, {
+					fmt("<leader>{}", { i(1) }),
+					i(1)
+				}),
+				i(2, "")
+			}
 		)
 	),
+	s(
+		"k",
+		fmt(
+			"{{\n	'{}',\n}}",
+			{
+				i(1),
+			}
+		)
+	)
 }
 
 return snippets

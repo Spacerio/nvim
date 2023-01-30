@@ -30,10 +30,15 @@ map('v', '<', '<gv', opts)
 --Switch ` and '
 map('n', '\'', '`', opts)
 
+-- Luasnip select
+vim.api.nvim_set_keymap("i", "<M-n>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("s", "<M-n>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("i", "<M-p>", "<Plug>luasnip-prev-choice", {})
+vim.api.nvim_set_keymap("s", "<M-p>", "<Plug>luasnip-prev-choice", {})
+
 --harpoon
 map('n', '<M-j><M-i>', ':lua require("harpoon.mark").add_file()<cr>', opts)
 map('n', '<M-u>', ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
-
 map('n', '<M-j><M-a>', ':lua require("harpoon.ui").nav_file(1)<cr>', opts)
 map('n', '<M-j><M-s>', ':lua require("harpoon.ui").nav_file(2)<cr>', opts)
 map('n', '<M-j><M-d>', ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
