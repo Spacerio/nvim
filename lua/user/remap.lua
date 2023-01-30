@@ -90,7 +90,6 @@ map('n', '<C-p>', ":lua builtin.git_files(compact_dropdown)<cr>", opts)
 map('n', '<M-p>', ":lua builtin.fd(compact_dropdown)<cr>", opts)
 map('n', '<C-n>', ":Telescope builtin<cr>", opts)
 map('n', '<C-g>', ":lua builtin.live_grep(themes.get_ivy())<cr>", opts)
-map('n', '<C-f>', ":lua extensions.frecency.frecency(compact_dropdown)<cr>", opts)
 
 --Unbind visual K
 map('v', 'K', '', opts)
