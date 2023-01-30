@@ -1,4 +1,6 @@
 require('mason').setup()
+local dap = require("dap")
+local dapui = require("dapui")
 
 require("mason-lspconfig").setup {
 	ensure_installed = { "sumneko_lua", "rust_analyzer" },
@@ -105,9 +107,15 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	width = 60,
 })
 
-local extension_path = vim.env.HOME .. '.vadimcn.vscode-lldb-1.8.1/'
-local codelldb_path = extension_path .. 'adapter/codelldb'
-local liblldb_path = extension_path .. 'lldb/lib/liblldb.lib'
+local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+local codelldb_adapter = {
+	type = "server",
+	port = "${port}",
+	executable = {
+		command = mason_path .. "bin/codelldb",
+		args = { "--port", "${port}" },
+	},
+}
 
 rt.setup({
 	server = {
@@ -118,8 +126,39 @@ rt.setup({
 		standalone = true,
 	},
 	dap = {
-		adapter = require("rust-tools.dap").get_codelldb_adapter(
-			codelldb_path, liblldb_path
-		)
+		adapter = codelldb_adapter
 	},
+	tools = {
+		reload_workspace_from_cargo_toml = true,
+		runnables = {
+			use_telescope = true,
+		},
+		inlay_hints = {
+			max_len_align = true,
+		}
+	}
 })
+
+dap.adapters.codelldb = codelldb_adapter
+dap.configurations.rust = {
+	{
+		name = "Launch file",
+		type = "codelldb",
+		request = "launch",
+		program = function()
+			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		end,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+	},
+}
+
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
