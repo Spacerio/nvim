@@ -136,8 +136,9 @@ local plugins = {
 		'theprimeagen/vim-be-good',
 		cmd = "VimBeGood",
 	},
-
-	--LSP
+	
+}
+local lsp = {
 	{ 'neovim/nvim-lspconfig',
 		lazy = false,
 		config = function()
@@ -168,5 +169,9 @@ local plugins = {
 		}
 	},
 }
+
+for i = 1, #lsp do
+	plugins[#plugins + 1] = lsp[i]
+end
 
 return plugins
