@@ -86,7 +86,6 @@ themes = require('telescope.themes')
 builtin = require('telescope.builtin')
 compact_dropdown = themes.get_dropdown { previewer = false, hidden = true }
 extensions = require('telescope').extensions
-
 map('n', '<C-p>', "<cmd>lua builtin.git_files(compact_dropdown)<cr>", opts)
 map('n', '<M-p>', "<cmd>lua builtin.fd(compact_dropdown)<cr>", opts)
 map('n', '<C-n>', "<cmd>Telescope builtin<cr>", opts)
@@ -105,6 +104,9 @@ map('n', '<leader>fA', '<cmd>Telescope autocommands<cr>', opts)
 map('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts)
 map('n', '<leader>fr', '<cmd>Telescope reloader<cr>', opts)
 map('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts)
+map('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts)
+
+map('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts)
 
 --Unbind visual K
 map('v', 'K', '', opts)

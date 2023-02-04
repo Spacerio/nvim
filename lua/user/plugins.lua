@@ -31,7 +31,12 @@ local plugins = {
 			'jvgrootveld/telescope-zoxide',
 			'nvim-telescope/telescope-file-browser.nvim',
 			'nvim-telescope/telescope-ui-select.nvim',
-			'willthbill/opener.nvim'
+			'willthbill/opener.nvim',
+			{
+				"AckslD/nvim-neoclip.lua",
+				name = "neoclip",
+				config = { keys = { telescope = { i = { paste = '<c-j>' }}}}
+			},
 		},
 	},
 	{ 'nvim-tree/nvim-web-devicons' },
@@ -151,6 +156,10 @@ local plugins = {
 		event = "VeryLazy",
 		dependencies = { 'junegunn/fzf' }
 	},
+	{
+		'dstein64/vim-startuptime',
+		cmd = "StartupTime"
+	}
 
 }
 local lsp = {
