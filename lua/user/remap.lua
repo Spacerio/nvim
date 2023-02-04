@@ -30,6 +30,10 @@ map('v', '<', '<gv', opts)
 --Switch ` and '
 map('n', '\'', '`', opts)
 
+--Better C-u and C-d
+map('n', '<C-d>', '<C-d>zz', opts)
+map('n', '<C-u>', '<C-u>zz', opts)
+
 -- Luasnip select
 map("i", "<M-n>", "<Plug>luasnip-next-choice", opts)
 map("s", "<M-n>", "<Plug>luasnip-next-choice", opts)
@@ -69,10 +73,6 @@ map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
 map('n', '<leader>rn', ':RustRunnables<cr>', opts)
 map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
 
---Better C-u and C-d
-map('n', '<C-d>', '<C-d>zz', opts)
-map('n', '<C-u>', '<C-u>zz', opts)
-
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
 --Format on keymap
@@ -94,7 +94,6 @@ map('n', '<leader>fb', '<cmd>Telescope file_browser<cr>', opts)
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
 map('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', opts)
 map('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts)
-map('n', '<leader>fo', '<cmd>Telescope opener<cr>', opts)
 map('n', '<leader>fO', '<cmd>Telescope vim_options<cr>', opts)
 map('n', '<leader>ft', '<cmd>Telescope filetypes<cr>', opts)
 map('n', '<leader>fH', '<cmd>Telescope command_history<cr>', opts)
@@ -105,8 +104,12 @@ map('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts)
 map('n', '<leader>fr', '<cmd>Telescope reloader<cr>', opts)
 map('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts)
 map('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts)
-
 map('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts)
+map('n', '<leader>fo', '<cmd>Telescope opener hidden=true<cr>', opts)
+
+-- Leap.nvim
+map('n', '\\', '<plug>(leap-forward-to)', opts)
+map('n', '|', '<plug>(leap-backward-to)', opts)
 
 --Unbind visual K
 map('v', 'K', '', opts)

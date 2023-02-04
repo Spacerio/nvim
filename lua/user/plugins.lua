@@ -35,7 +35,7 @@ local plugins = {
 			{
 				"AckslD/nvim-neoclip.lua",
 				name = "neoclip",
-				config = { keys = { telescope = { i = { paste = '<c-j>' }}}}
+				config = { keys = { telescope = { i = { paste = '<c-j>' } } } }
 			},
 		},
 	},
@@ -159,7 +159,11 @@ local plugins = {
 	{
 		'dstein64/vim-startuptime',
 		cmd = "StartupTime"
-	}
+	},
+	{ 
+		'ggandor/leap.nvim',
+		event = "VeryLazy",
+	},
 
 }
 local lsp = {
