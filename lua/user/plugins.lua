@@ -137,6 +137,10 @@ local plugins = {
 		cmd = "VimBeGood",
 	},
 	
+	{
+		'nicwest/vim-workman',
+		cmd = { 'Workman' }
+	},
 }
 local lsp = {
 	{ 'neovim/nvim-lspconfig',
