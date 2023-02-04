@@ -1,6 +1,8 @@
 local ls = require('luasnip')
 
 ls.config.set_config({
+	history = true,
+	updateevents = "TextChanged, TextChangedI",
 	region_check_events = 'InsertEnter',
 	delete_check_events = 'InsertLeave'
 })

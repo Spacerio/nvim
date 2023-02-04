@@ -31,10 +31,12 @@ map('v', '<', '<gv', opts)
 map('n', '\'', '`', opts)
 
 -- Luasnip select
-vim.api.nvim_set_keymap("i", "<M-n>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("s", "<M-n>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("i", "<M-p>", "<Plug>luasnip-prev-choice", {})
-vim.api.nvim_set_keymap("s", "<M-p>", "<Plug>luasnip-prev-choice", {})
+map("i", "<M-n>", "<Plug>luasnip-next-choice", opts)
+map("s", "<M-n>", "<Plug>luasnip-next-choice", opts)
+map("i", "<M-p>", "<Plug>luasnip-prev-choice", opts)
+map("s", "<M-p>", "<Plug>luasnip-prev-choice", opts)
+map('i', '<M-j>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
+map('i', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 
 --harpoon
 map('n', '<M-j><M-i>', ':lua require("harpoon.mark").add_file()<cr>', opts)
@@ -71,7 +73,6 @@ map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
---Quit neovim, only userful really with sessions
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
 --Format on keymap
