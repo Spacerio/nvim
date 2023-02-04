@@ -1,5 +1,5 @@
-local opts = {noremap = true, silent = true}
-local remap = {silent = true}
+local opts = { noremap = true, silent = true }
+local remap = { silent = true }
 local map = vim.api.nvim_set_keymap
 
 map("", "<Space>", "<Nop>", opts)
@@ -76,7 +76,7 @@ map('n', '<C-u>', '<C-u>zz', opts)
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
 --Format on keymap
-map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+map('n', '<leader>o', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
 
 -- Delete other buffers
 map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
@@ -84,13 +84,27 @@ map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
 --Telescope
 themes = require('telescope.themes')
 builtin = require('telescope.builtin')
-compact_dropdown = themes.get_dropdown{previewer = false, hidden = true}
+compact_dropdown = themes.get_dropdown { previewer = false, hidden = true }
 extensions = require('telescope').extensions
 
-map('n', '<C-p>', ":lua builtin.git_files(compact_dropdown)<cr>", opts)
-map('n', '<M-p>', ":lua builtin.fd(compact_dropdown)<cr>", opts)
-map('n', '<C-n>', ":Telescope builtin<cr>", opts)
-map('n', '<C-g>', ":lua builtin.live_grep(themes.get_ivy())<cr>", opts)
+map('n', '<C-p>', "<cmd>lua builtin.git_files(compact_dropdown)<cr>", opts)
+map('n', '<M-p>', "<cmd>lua builtin.fd(compact_dropdown)<cr>", opts)
+map('n', '<C-n>', "<cmd>Telescope builtin<cr>", opts)
+map('n', '<M-g>', "<cmd>lua builtin.live_grep(themes.get_ivy())<cr>", opts)
+map('n', '<leader>fb', '<cmd>Telescope file_browser<cr>', opts)
+map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
+map('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', opts)
+map('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts)
+map('n', '<leader>fo', '<cmd>Telescope opener<cr>', opts)
+map('n', '<leader>fO', '<cmd>Telescope vim_options<cr>', opts)
+map('n', '<leader>ft', '<cmd>Telescope filetypes<cr>', opts)
+map('n', '<leader>fH', '<cmd>Telescope command_history<cr>', opts)
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
+map('n', '<leader>fp', '<cmd>Telescope man_pages<cr>', opts)
+map('n', '<leader>fA', '<cmd>Telescope autocommands<cr>', opts)
+map('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts)
+map('n', '<leader>fr', '<cmd>Telescope reloader<cr>', opts)
+map('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts)
 
 --Unbind visual K
 map('v', 'K', '', opts)

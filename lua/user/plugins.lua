@@ -27,6 +27,12 @@ local plugins = {
 		config = function()
 			require('user.plugins.telescope')
 		end,
+		dependencies = {
+			'jvgrootveld/telescope-zoxide',
+			'nvim-telescope/telescope-file-browser.nvim',
+			'nvim-telescope/telescope-ui-select.nvim',
+			'willthbill/opener.nvim'
+		},
 	},
 	{ 'nvim-tree/nvim-web-devicons' },
 	{ 'muniftanjim/nui.nvim' },
@@ -136,11 +142,16 @@ local plugins = {
 		'theprimeagen/vim-be-good',
 		cmd = "VimBeGood",
 	},
-	
 	{
 		'nicwest/vim-workman',
 		cmd = { 'Workman' }
 	},
+	{
+		'junegunn/fzf.vim',
+		event = "VeryLazy",
+		dependencies = { 'junegunn/fzf' }
+	},
+
 }
 local lsp = {
 	{ 'neovim/nvim-lspconfig',
