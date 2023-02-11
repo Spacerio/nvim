@@ -44,6 +44,7 @@ local snippets = {
 				c(2, {
 					i(1),
 					fmt("<cmd>{}<cr>", { i(1) }),
+					fmt("<cmd>lua require(\"{}\").{}<cr>", { i(1), i(2) }),
 				})
 			}
 		)

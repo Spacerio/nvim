@@ -18,7 +18,12 @@ local plugins = {
 		event = 'VeryLazy',
 		config = function()
 			require('user.plugins.treesitter')
-		end
+		end,
+		dependencies = {
+			{
+				"nvim-orgmode/orgmode",
+			}
+		}
 	},
 	{ 'nvim-lua/plenary.nvim' },
 	{
@@ -121,7 +126,7 @@ local plugins = {
 	},
 	{
 		'mfussenegger/nvim-dap',
-		lazy = false,
+		event = "VeryLazy",
 		setup = true,
 		dependencies = {
 			{
@@ -160,7 +165,7 @@ local plugins = {
 		'dstein64/vim-startuptime',
 		cmd = "StartupTime"
 	},
-	{ 
+	{
 		'ggandor/leap.nvim',
 		event = "VeryLazy",
 	},
@@ -190,7 +195,7 @@ local lsp = {
 			{ 'hrsh7th/cmp-cmdline' },
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'hrsh7th/cmp-nvim-lua' },
-			{ 'kadobot/cmp-plugins', config = true },
+			{ 'kadobot/cmp-plugins', config = { files = { "plugins.lua" } } },
 			{ 'chrisgrieser/cmp-nerdfont' },
 			{ 'L3MON4D3/LuaSnip' },
 			{ 'rafamadriz/friendly-snippets' },
