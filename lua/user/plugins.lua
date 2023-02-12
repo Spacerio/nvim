@@ -60,7 +60,7 @@ local plugins = {
 		config = { map_c_h = true, map_c_w = true }
 	},
 	{ 'lewis6991/gitsigns.nvim',
-		event = "BufWinEnter",
+		event = "VeryLazy",
 		config = function()
 			require('user.plugins.gitsigns')
 		end
