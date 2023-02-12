@@ -53,6 +53,11 @@ local plugins = {
 	{
 		'folke/trouble.nvim',
 		cmd = "TroubleToggle",
+		config = {
+			action_keys = {
+				close = { 'gl', 'q' }
+			}
+		}
 	},
 	{
 		'windwp/nvim-autopairs',
