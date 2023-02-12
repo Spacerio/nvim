@@ -2,9 +2,9 @@ require('mason').setup()
 local dap = require("dap")
 local dapui = require("dapui")
 
-require("mason-lspconfig").setup {
-	ensure_installed = { "sumneko_lua", "rust_analyzer" },
-}
+-- require("mason-lspconfig").setup {
+-- 	ensure_installed = { "lua_ls", "rust_analyzer" },
+-- }
 
 local rt = require("rust-tools")
 
