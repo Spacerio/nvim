@@ -2,9 +2,9 @@ require('mason').setup()
 local dap = require("dap")
 local dapui = require("dapui")
 
--- require("mason-lspconfig").setup {
--- 	ensure_installed = { "lua_ls", "rust_analyzer" },
--- }
+require("mason-lspconfig").setup {
+	ensure_installed = { "lua_ls", "rust_analyzer", "bashls" },
+}
 
 local rt = require("rust-tools")
 
@@ -56,7 +56,7 @@ require('mason-lspconfig').setup_handlers({
 		lspconfig.bashls.setup {
 			on_attach = lsp_attach,
 			capabilities = lsp_capabilities,
-			filetypes = { 'bash', 'zsh' },
+			filetypes = { 'bash', 'zsh', 'sh' },
 		}
 	end
 })

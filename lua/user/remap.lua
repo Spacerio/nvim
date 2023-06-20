@@ -34,6 +34,9 @@ map('n', '\'', '`', opts)
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
+--Source
+map('n', '<leader>s', '<cmd>source %<cr>', opts)
+
 -- Luasnip select
 map("i", "<M-n>", "<Plug>luasnip-next-choice", opts)
 map("s", "<M-n>", "<Plug>luasnip-next-choice", opts)
