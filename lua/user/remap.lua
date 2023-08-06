@@ -75,6 +75,9 @@ map('n', '<leader>re', ':lua require("dap").terminate()<cr>', opts)
 map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
 map('n', '<leader>rn', ':RustRunnables<cr>', opts)
 map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
+map("n", "<leader>rr", ":w<cr>:ToggleTerm size=100 direction=vertical<cr>cls<cr>cargo run<cr>", opts)
+
+map('n', '<C-m>', '<cmd>make<cr>', opts)
 
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 

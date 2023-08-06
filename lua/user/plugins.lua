@@ -174,6 +174,11 @@ local plugins = {
 		'ggandor/leap.nvim',
 		event = "VeryLazy",
 	},
+	{
+		'akinsho/toggleterm.nvim',
+		config = true,
+		cmd = "ToggleTerm"
+	}
 
 }
 local lsp = {
