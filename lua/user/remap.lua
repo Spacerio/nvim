@@ -43,7 +43,9 @@ map("s", "<M-n>", "<Plug>luasnip-next-choice", opts)
 map("i", "<M-p>", "<Plug>luasnip-prev-choice", opts)
 map("s", "<M-p>", "<Plug>luasnip-prev-choice", opts)
 map('i', '<M-j>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
+map('s', '<M-j>', '<cmd>lua require("luasnip").jump(-1)<cr>', opts)
 map('i', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
+map('s', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 
 --harpoon
 map('n', '<M-j><M-i>', ':lua require("harpoon.mark").add_file()<cr>', opts)
@@ -75,7 +77,8 @@ map('n', '<leader>re', ':lua require("dap").terminate()<cr>', opts)
 map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
 map('n', '<leader>rn', ':RustRunnables<cr>', opts)
 map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
-map("n", "<leader>rr", ":w<cr>:ToggleTerm size=100 direction=vertical<cr>cls<cr>cargo run<cr>", opts)
+-- map("n", "<leader>rr", ":w<cr>:ToggleTerm size=100 direction=vertical<cr>cls<cr>cargo run<cr>", opts)
+map('n', '<leader>rr', '<cmd>!cargo run<cr>', opts)
 
 map('n', '<C-m>', '<cmd>make<cr>', opts)
 
