@@ -194,7 +194,7 @@ local lsp = {
 		}
 	},
 	{ 'hrsh7th/nvim-cmp',
-		event = "InsertEnter",
+		event = {"InsertEnter", "CmdlineEnter"},
 		config = function()
 			require('user.lsp.cmp')
 		end,
