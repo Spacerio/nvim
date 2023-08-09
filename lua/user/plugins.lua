@@ -1,6 +1,7 @@
 local plugins = {
 	{
 		"folke/tokyonight.nvim",
+		event = "CmdlineEnter"
 	},
 	{
 		'catppuccin/nvim',
