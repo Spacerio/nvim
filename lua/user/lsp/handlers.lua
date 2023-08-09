@@ -121,7 +121,7 @@ rt.setup({
 	server = {
 		on_attach = function(client, bufnr)
 			lsp_attach(client, bufnr)
-			vim.keymap.set('n', 'gs', rt.hover_actions.hover_actions, { remap = true, buffer = bufnr })
+			vim.keymap.set('n', 'go', rt.hover_actions.hover_actions, { remap = true, buffer = bufnr })
 		end,
 		standalone = true,
 	},

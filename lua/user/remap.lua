@@ -80,7 +80,7 @@ map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
 -- map("n", "<leader>rr", ":w<cr>:ToggleTerm size=100 direction=vertical<cr>cls<cr>cargo run<cr>", opts)
 map('n', '<leader>rr', '<cmd>!cargo run<cr>', opts)
 
-map('n', '<C-m>', '<cmd>make<cr>', opts)
+-- map('n', '<C-m>', '<cmd>make<cr>', opts)
 
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
@@ -125,3 +125,41 @@ map('v', 'K', '', opts)
 
 --Terminal window, visual glitches
 map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
+
+local make = function ()
+	local ft = vim.bo.filetype
+	local case = {
+		lua = function ()
+			vim.cmd("source %")
+		end,
+
+		c = function ()
+			vim.cmd("make")
+		end,
+
+		rust = function ()
+			vim.cmd("!cargo run")
+		end,
+
+		python = function ()
+			vim.cmd("vsp")
+			vim.cmd("term python3 % i")
+			vim.api.nvim_input("i")
+		end,
+
+		default = function ()
+			vim.cmd("make")
+		end
+
+	}
+
+	vim.cmd("w")
+
+	if case[ft] then
+		case[ft]()
+	else
+		case["default"]()
+	end
+end
+
+vim.keymap.set('n', '<C-m>', make)
