@@ -30,6 +30,7 @@ local plugins = {
 	{
 		'nvim-telescope/telescope.nvim',
 		event = "VeryLazy",
+		cmd = "Telescope", 
 		config = function()
 			require('user.plugins.telescope')
 		end,
