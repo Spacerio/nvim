@@ -124,7 +124,7 @@ map('n', '|', '<plug>(leap-backward-to)', opts)
 map('v', 'K', '', opts)
 
 --Terminal window, visual glitches
-map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
+map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 
 local make = function ()
 	local ft = vim.bo.filetype
@@ -163,3 +163,8 @@ local make = function ()
 end
 
 vim.keymap.set('n', '<C-m>', make)
+
+
+-- TEMP
+map('n', '<leader>t', ':Telekasten', {})
+
