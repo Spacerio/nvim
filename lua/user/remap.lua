@@ -23,6 +23,8 @@ map('n', '<M-l>', '<C-^>', opts)
 -- map('n', '<C-j>', '<C-w>j', opts)
 -- map('n', '<C-k>', '<C-w>k', opts)
 
+map('i', '<C-d>', '<Del>', opts)
+
 -- Better indent, stay in visual
 map('v', '>', '>gv', opts)
 map('v', '<', '<gv', opts)
@@ -135,6 +137,11 @@ local make = function ()
 
 		c = function ()
 			vim.cmd("make")
+		end,
+
+		cpp = function ()
+			vim.cmd("vs | term make")
+			vim.api.nvim_input("i")
 		end,
 
 		rust = function ()
