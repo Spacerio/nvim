@@ -1,5 +1,5 @@
 if vim.g.neovide then
-	vim.cmd "let g:neovide_transparency = 0.75"
+	vim.cmd "let g:neovide_transparency = 1.0"
 	vim.cmd "let g:neovide_fullscreen = v:true"
 	vim.cmd "let g:neovide_cursor_trail_size = 0.1"
 
@@ -19,6 +19,6 @@ if vim.g.neovide then
 		end
 	end
 
-	vim.keymap.set('n', '<F11>', ToggleFullscreen, { silent = true })
-	vim.keymap.set('n', '<F10>', ToggleTransparency, { silent = true })
+	vim.keymap.set('n', '<space>sf', ToggleFullscreen, { silent = true })
+	vim.keymap.set('n', '<space>st', ToggleTransparency, { silent = true })
 end

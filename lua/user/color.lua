@@ -1,5 +1,5 @@
 function color(color, transparent)
-	color = color or "tokyonight-night"
+	color = color or "catppuccin"
 
 	if color == "tokyonight-night" then
 		require('tokyonight').setup({
@@ -15,7 +15,7 @@ function color(color, transparent)
 		require('catppuccin').setup({
 			flavour = "mocha",
 			transparent = false,
-			no_italic = true,
+			no_italic = false,
 			integrations = {
 				treesitter = true,
 				noice = true,
@@ -28,7 +28,7 @@ function color(color, transparent)
 	vim.cmd.colorscheme(color)
 
 	if transparent and not vim.g.neovide then
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		vim.api.nvim_set_hl(0, "Normal", { bg = "none", cterm = "italic" })
 		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
 		vim.api.nvim_set_hl(0, "LazyNormal", {bg="#1E1E2E"})
@@ -36,4 +36,3 @@ function color(color, transparent)
 	end
 	require("user.ginit")
 end
-

@@ -133,7 +133,8 @@ local plugins = {
 	},
 	{
 		'mfussenegger/nvim-dap',
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		cmd = "dap",
 		setup = true,
 		dependencies = {
 			{
