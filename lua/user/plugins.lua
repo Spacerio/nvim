@@ -132,7 +132,8 @@ local plugins = {
 	},
 	{
 		'mfussenegger/nvim-dap',
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		cmd = "dap",
 		setup = true,
 		dependencies = {
 			{
@@ -179,7 +180,18 @@ local plugins = {
 		'akinsho/toggleterm.nvim',
 		config = true,
 		cmd = "ToggleTerm"
-	}
+	},
+	{
+		'ahmedkhalf/project.nvim',
+		config = function ()
+			require("project_nvim").setup{
+				patterns = { ".git", "Makefile", "package.json", ".obsidian", "!=lua" },
+				ignore_lsp = { "lua_ls" },
+				exclude_dirs = { "~/AppData/Local/nvim/lua" }
+			}
+		end,
+		cmd = "Telescope projects"
+	},
 
 }
 local lsp = {

@@ -3,7 +3,7 @@ require("telescope").setup {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown()
 		}
-	}
+	},
 }
 
 require("telescope").load_extension("harpoon")
@@ -13,3 +13,4 @@ require("telescope").load_extension("file_browser")
 require("telescope").load_extension("zoxide")
 require("telescope").load_extension("opener")
 require("telescope").load_extension("neoclip")
+require("telescope").load_extension("projects")

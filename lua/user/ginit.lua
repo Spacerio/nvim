@@ -19,6 +19,6 @@ if vim.g.neovide then
 		end
 	end
 
-	vim.keymap.set('n', '<F11>', ToggleFullscreen, { silent = true })
-	vim.keymap.set('n', '<F10>', ToggleTransparency, { silent = true })
+	vim.keymap.set('n', '<leader>sf', ToggleFullscreen, { silent = true })
+	vim.keymap.set('n', '<leader>st', ToggleTransparency, { silent = true })
 end
