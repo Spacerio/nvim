@@ -110,7 +110,8 @@ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 map('n', '<leader>fp', '<cmd>Telescope man_pages<cr>', opts)
 map('n', '<leader>fA', '<cmd>Telescope autocommands<cr>', opts)
 map('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts)
-map('n', '<leader>fr', '<cmd>Telescope reloader<cr>', opts)
+map('n', '<leader>fR', '<cmd>Telescope reloader<cr>', opts)
+map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', opts)
 map('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts)
 map('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts)
 map('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts)
@@ -167,4 +168,3 @@ vim.keymap.set('n', '<C-m>', make)
 
 -- TEMP
 map('n', '<leader>t', ':Telekasten', {})
-

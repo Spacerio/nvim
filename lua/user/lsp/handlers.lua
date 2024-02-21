@@ -35,6 +35,8 @@ local function lsp_attach(client, bufnr)
 	lsp_remaps(bufnr)
 end
 
+require("neodev").setup()
+
 local lspconfig = require('lspconfig')
 
 local opts = {
