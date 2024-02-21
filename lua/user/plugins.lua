@@ -30,6 +30,7 @@ local plugins = {
 	{
 		'nvim-telescope/telescope.nvim',
 		event = "VeryLazy",
+		cmd = "Telescope", 
 		config = function()
 			require('user.plugins.telescope')
 		end,
@@ -182,17 +183,19 @@ local plugins = {
 		cmd = "ToggleTerm"
 	},
 	{
-		'ahmedkhalf/project.nvim',
-		config = function ()
-			require("project_nvim").setup{
-				patterns = { ".git", "Makefile", "package.json", ".obsidian", "!=lua" },
-				ignore_lsp = { "lua_ls" },
-				exclude_dirs = { "~/AppData/Local/nvim/lua" }
-			}
-		end,
-		cmd = "Telescope projects"
+		"epwalsh/obsidian.nvim",
+		event = { "VeryLazy" },
+		opts = { dir = "~/notes" },
 	},
-
+	{
+		'renerocksai/telekasten.nvim',
+		cmd = 'Telekasten',
+		config = function ()
+			require("telekasten").setup({
+				home = "/mnt/c/Users/gr289336/Documents/Notes/" 
+			})
+		end
+	}
 }
 local lsp = {
 	{ 'neovim/nvim-lspconfig',

@@ -54,4 +54,3 @@
   "vim-startuptime": { "branch": "master", "commit": "454b3de856b7bd298700de33d79774ca9b9e3875" },
   "vim-tmux-navigator": { "branch": "master", "commit": "addb64a772cb4a3ae1f1363583012b2cada2cd66" },
   "vim-workman": { "branch": "master", "commit": "ffc5b46fe9c32637bc9f4385db0f5f7a54520dfb" }
-}

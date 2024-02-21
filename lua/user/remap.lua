@@ -156,7 +156,7 @@ map('n', '<leader>cc', '<cmd>cd $NVIM<cr>', opts)
 map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
 
 --Terminal window, visual glitches
-map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
+map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 
 local make = function()
 	local ft = vim.bo.filetype
@@ -169,7 +169,12 @@ local make = function()
 			vim.cmd("make")
 		end,
 
-		rust = function()
+		cpp = function ()
+			vim.cmd("vs | term make")
+			vim.api.nvim_input("i")
+		end,
+
+		rust = function ()
 			vim.cmd("!cargo run")
 		end,
 
