@@ -21,7 +21,8 @@ local opts = {
 	undofile = true,                         -- enable persistent undo
 	updatetime = 50,                         -- faster completion (4000ms default)
 	makeprg="make -s",
-	autochdir = true,
+	autochdir = false,
+	linebreak = true,
 
 	writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = false,                       -- convert tabs to spaces (disable)
