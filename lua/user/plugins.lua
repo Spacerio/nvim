@@ -195,8 +195,11 @@ local plugins = {
 				home = "/mnt/c/Users/gr289336/Documents/Notes/" 
 			})
 		end
-	}
+	},
+	{ 'milisims/nvim-luaref', event = "VeryLazy" },
+
 }
+
 local lsp = {
 	{ 'neovim/nvim-lspconfig',
 		lazy = false,
@@ -207,6 +210,7 @@ local lsp = {
 			{ 'williamboman/mason.nvim', },
 			{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'simrat39/rust-tools.nvim' },
+			{ 'folke/neodev.nvim', opts = {} },
 		}
 	},
 	{ 'hrsh7th/nvim-cmp',

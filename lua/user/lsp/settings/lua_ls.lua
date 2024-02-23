@@ -7,6 +7,9 @@ return {
 					[vim.fn.stdpath("config") .. "/lua"] = true,
 					-- [vim.fn.stdpath("data") .. "/lazy"] = true,
 				}
+			},
+			completion = {
+				callSnippet = "Replace"
 			}
 		}
 	}
