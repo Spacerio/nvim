@@ -55,7 +55,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'nvim_lua' },
-		{ name = 'buffer' },
+		{ name = 'buffer', keyword_lenght = 4 },
 		{ name = 'path' },
 		{ name = 'luasnip' },
 		{ name = 'plugins' },
@@ -164,8 +164,8 @@ cmp.event:on(
         if vim.bo.ft == "TelescopePrompt" then
             return false
         end
-        if vim.bo.ft == "lua" then
-            return true
+        if vim.bo.ft == "markdown" then
+            return false
         end
         local lnum, col =
             vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
