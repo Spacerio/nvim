@@ -1,14 +1,14 @@
 local os = require("os")
 
-local path_to_desktop = os.getenv("USERPROFILE") .. "\\Documents"
-
 local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
 
-vim.api.nvim_create_autocmd(
-    {"VimEnter"},
+if not vim.fn.has('linux') then
+	vim.api.nvim_create_autocmd(
+		{"VimEnter"},
 
-    { pattern = "*", command = "cd " .. os.getenv("USERPROFILE"), group = vim_enter_group }
-)
+		{ pattern = "*", command = "cd " .. os.getenv("USERPROFILE"), group = vim_enter_group }
+	)
+end
 
 local function get_git_root()
 	local dot_git_path = vim.fn.finddir(".git", ".;")

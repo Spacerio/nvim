@@ -49,7 +49,7 @@ local border = {
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	sources = cmp.config.sources({
@@ -61,6 +61,7 @@ cmp.setup({
 		{ name = 'plugins' },
 		{ name = 'nerdfont' },
 		{ name = 'orgmode' },
+		{ name = 'neodev' },
 	}, { { name = 'buffer' } }),
 	view = {
 		entries = "custom"
@@ -155,7 +156,7 @@ cmp.event:on(
 	cmp_autopairs.on_confirm_done()
 )
 
-    enabled = function()
+cmp.setup.enabled = function()
         -- if require"cmp.config.context".in_treesitter_capture("comment")==true or require"cmp.config.context".in_syntax_group("Comment") then
         --   return false
         -- else
@@ -164,8 +165,8 @@ cmp.event:on(
         if vim.bo.ft == "TelescopePrompt" then
             return false
         end
-        if vim.bo.ft == "lua" then
-            return true
+        if vim.bo.ft == "markdown" then
+            return false
         end
         local lnum, col =
             vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))

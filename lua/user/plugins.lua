@@ -134,7 +134,7 @@ local plugins = {
 	{
 		'mfussenegger/nvim-dap',
 		-- event = "VeryLazy",
-		cmd = "dap",
+		cmd = "Dap",
 		setup = true,
 		dependencies = {
 			{
@@ -182,11 +182,11 @@ local plugins = {
 		config = true,
 		cmd = "ToggleTerm"
 	},
-	{
-		"epwalsh/obsidian.nvim",
-		event = { "VeryLazy" },
-		opts = { dir = "~/notes" },
-	},
+	-- {
+	-- 	"epwalsh/obsidian.nvim",
+	-- 	event = { "VeryLazy" },
+	-- 	opts = { dir = "~/notes" },
+	-- },
 	{
 		'renerocksai/telekasten.nvim',
 		cmd = 'Telekasten',
@@ -210,7 +210,6 @@ local lsp = {
 			{ 'williamboman/mason.nvim', },
 			{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'simrat39/rust-tools.nvim' },
-			{ 'folke/neodev.nvim', opts = {} },
 		}
 	},
 	{ 'hrsh7th/nvim-cmp',
@@ -227,8 +226,9 @@ local lsp = {
 			{ 'hrsh7th/cmp-nvim-lua' },
 			{ 'kadobot/cmp-plugins', config = { files = { "plugins.lua" } } },
 			{ 'chrisgrieser/cmp-nerdfont' },
-			{ 'L3MON4D3/LuaSnip' },
+			{ 'L3MON4D3/LuaSnip', version = "ea7d7ea510c641c4f15042becd27f35b3e5b3c2b" },
 			{ 'rafamadriz/friendly-snippets' },
+			{ 'folke/neodev.nvim', opts = {} },
 		}
 	},
 }
