@@ -170,7 +170,7 @@ local make = function()
 		end,
 
 		cpp = function ()
-			vim.cmd("vs | term make")
+			vim.cmd("vs | term make %:r")
 			vim.api.nvim_input("i")
 		end,
 
