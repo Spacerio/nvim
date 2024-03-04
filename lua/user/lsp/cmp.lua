@@ -55,14 +55,14 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'nvim_lua' },
-		{ name = 'buffer', keyword_lenght = 4 },
+		{ name = 'buffer', keyword_lenght = 4, priority = 1 },
 		{ name = 'path' },
 		{ name = 'luasnip' },
 		{ name = 'plugins' },
 		{ name = 'nerdfont' },
 		{ name = 'orgmode' },
 		{ name = 'neodev' },
-	}, { { name = 'buffer' } }),
+	}),
 	view = {
 		entries = "custom"
 	},

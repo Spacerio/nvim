@@ -54,13 +54,6 @@ require('mason-lspconfig').setup_handlers({
 		end
 		lspconfig[server_name].setup(opts)
 	end,
-	["bashls"] = function(server_name)
-		lspconfig.bashls.setup {
-			on_attach = lsp_attach,
-			capabilities = lsp_capabilities,
-			filetypes = { 'bash', 'zsh', 'sh' },
-		}
-	end
 })
 
 require("lspconfig").asm_lsp.setup {
@@ -82,7 +75,7 @@ for _, sign in ipairs(signs) do
 end
 
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = true,
 	signs = {
 		active = signs,
 	},

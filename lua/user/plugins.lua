@@ -204,16 +204,17 @@ local lsp = {
 	{ 'neovim/nvim-lspconfig',
 		lazy = false,
 		config = function()
-			require('user.lsp')
+			require('user.lsp.handlers')
 		end,
 		dependencies = {
 			{ 'williamboman/mason.nvim', },
 			{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'simrat39/rust-tools.nvim' },
+			{ 'folke/neodev.nvim' },
 		}
 	},
 	{ 'hrsh7th/nvim-cmp',
-		event = {"InsertEnter", "CmdlineEnter"},
+		event = {"InsertEnter", "CmdlineEnter", "VeryLazy"},
 		config = function()
 			require('user.lsp.cmp')
 		end,
@@ -228,7 +229,7 @@ local lsp = {
 			{ 'chrisgrieser/cmp-nerdfont' },
 			{ 'L3MON4D3/LuaSnip', version = "ea7d7ea510c641c4f15042becd27f35b3e5b3c2b" },
 			{ 'rafamadriz/friendly-snippets' },
-			{ 'folke/neodev.nvim', opts = {} },
+			{ 'folke/neodev.nvim' },
 		}
 	},
 }
