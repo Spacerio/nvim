@@ -105,10 +105,13 @@ map('n', '<leader>re', ':lua require("dap").terminate()<cr>', opts)
 map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
 map('n', '<leader>rn', ':RustRunnables<cr>', opts)
 map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
--- map("n", "<leader>rr", ":w<cr>:ToggleTerm size=100 direction=vertical<cr>cls<cr>cargo run<cr>", opts)
-map('n', '<leader>rr', '<cmd>!cargo run<cr>', opts)
+map('n', '<leader>rr', '<cmd>vs | term cargo run<cr>i', opts)
+map('n', '<leader>rr', function()
+	vim.cmd("vs | term cargo run")
+	vim.api.nvim_input("i")
+end, opts)
 
--- map('n', '<C-m>', '<cmd>make<cr>', opts)
+map('n', 'gz', '<cmd>ZenMode<cr>', opts)
 
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
@@ -116,7 +119,7 @@ map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
 
 -- Delete other buffers
-map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
+map('n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
 
 --Telescope
 themes = require('telescope.themes')
@@ -185,6 +188,7 @@ local make = function()
 
 		rust = function ()
 			vim.cmd("!cargo run")
+			-- also could use :compiler cargo :make run
 		end,
 
 		python = function()
@@ -200,8 +204,8 @@ local make = function()
 
 	if case[ft] then
 		case[ft]()
-	else
-		case["default"]()
+	-- else
+	-- 	case["default"]()
 	end
 end
 

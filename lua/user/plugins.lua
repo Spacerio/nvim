@@ -199,8 +199,10 @@ local plugins = {
 	{ 'milisims/nvim-luaref', event = "VeryLazy" },
 	{
 		"folke/zen-mode.nvim",
+		cmd = 'ZenMode',
 		opts = {
-			tmux = { enabled = true }
+			window = { width = 1 },
+			plugins = { tmux = { enabled = true }}
 		}
 	}
 
