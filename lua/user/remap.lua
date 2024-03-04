@@ -156,37 +156,43 @@ map('n', '<leader>cc', '<cmd>cd $NVIM<cr>', opts)
 map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
 
 --Terminal window, visual glitches
-map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
+map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
 
 local make = function()
 	local ft = vim.bo.filetype
+	local make = function()
+		if vim.fn.filereadable("makefile") then
+			vim.cmd("vs | term make")
+		else
+			vim.cmd("! g++ % -o %<")
+			vim.cmd("vs | term ./%<")
+		end
+		vim.api.nvim_input("i")
+	end
 	local case = {
 		lua = function()
+			vim.cmd("w")
 			vim.cmd("source %")
 		end,
 
-		c = function()
-			vim.cmd("make")
-		end,
+		c = make,
 
-		cpp = function ()
-			vim.cmd("vs | term make %:r")
-			vim.api.nvim_input("i")
-		end,
+		-- cpp = function ()
+		-- 	vim.cmd("vs | term make %:r")
+		-- 	vim.api.nvim_input("i")
+		-- end,
+		cpp = make,
 
 		rust = function ()
 			vim.cmd("!cargo run")
 		end,
 
 		python = function()
-			vim.cmd("vsp")
-			vim.cmd("term python3 % i")
+			vim.cmd("vs | term python3 % i")
 			vim.api.nvim_input("i")
 		end,
 
-		default = function()
-			vim.cmd("make")
-		end
+		default = make
 
 	}
 
