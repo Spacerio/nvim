@@ -23,7 +23,6 @@ local opts = {
 	makeprg="make -s",
 	autochdir = false,
 	linebreak = true,
-
 	writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = false,                       -- convert tabs to spaces (disable)
 	shiftwidth = 4,                          -- the number of spaces inserted for each indentation
@@ -38,6 +37,7 @@ local opts = {
 	scrolloff = 8,                          -- is one of my fav
 	sidescrolloff = 8,
 	guifont = "monospace:h17",               -- the font used in graphical neovim applications
+	shortmess = "filnxtToOF", 				--Remove C to show amount of search results 
 }
 
 for k, v in pairs(opts) do
