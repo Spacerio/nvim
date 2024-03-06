@@ -8,31 +8,31 @@ local has_words_before = function()
 end
 
 local icons = {
-	Text = "",
+	Text = "󰊄",
 	Method = "m",
-	Function = "",
+	Function = "󰊕",
 	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
+	Field = " ",
+	Variable = "",
+	Class = "",
 	Interface = "",
 	Module = "",
 	Property = "",
 	Unit = "",
-	Value = "",
+	Value = "",
 	Enum = "",
-	Keyword = "",
+	Keyword = "󰌋",
 	Snippet = "",
-	Color = "",
-	File = "",
+	Color = "",
+	File = "",
 	Reference = "",
-	Folder = "",
+	Folder = "",
 	EnumMember = "",
-	Constant = "",
+	Constant = "",
 	Struct = "",
 	Event = "",
-	Operator = "",
-	TypeParameter = "",
+	Operator = "",
+	TypeParameter = "",
 	Copilot = ""
 }
 
@@ -55,7 +55,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 1000 },
 		{ name = 'nvim_lua' },
-		{ name = 'buffer', keyword_lenght = 4, priority = 1 },
+		{ name = 'buffer', keyword_lenght = 4, priority = 0 },
 		{ name = 'path' },
 		{ name = 'luasnip' },
 		{ name = 'plugins' },
@@ -79,7 +79,6 @@ cmp.setup({
 	performance = {
 		debounce = 1,
 		throttle = 1,
-
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-p>"] = cmp.mapping {
@@ -120,12 +119,12 @@ cmp.setup({
 			vim_item.menu = ({
 					nvim_lsp = "",
 					luasnip = " ",
-					buffer = "﬘",
+					buffer = "",
 					path = "[Path]",
 					crates = "",
 					copilot = "",
 					cmdline = "",
-					plugins = "ﮣ",
+					plugins = "",
 					nerdfont = "[NF]",
 					orgmode = "[ORG]",
 				})[entry.source.name]
