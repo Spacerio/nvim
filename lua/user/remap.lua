@@ -196,7 +196,7 @@ local make = function()
 			vim.api.nvim_input("i")
 		end,
 
-		default = make
+		default = vim.api.nvim_input("<cr>")
 
 	}
 
