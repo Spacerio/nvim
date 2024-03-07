@@ -106,10 +106,6 @@ map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
 map('n', '<leader>rn', ':RustRunnables<cr>', opts)
 map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
 map('n', '<leader>rr', '<cmd>vs | term cargo run<cr>i', opts)
-map('n', '<leader>rr', function()
-	vim.cmd("vs | term cargo run")
-	vim.api.nvim_input("i")
-end, opts)
 
 map('n', 'gz', '<cmd>ZenMode<cr>', opts)
 
