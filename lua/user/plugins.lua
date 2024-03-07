@@ -42,7 +42,7 @@ local plugins = {
 			{
 				"AckslD/nvim-neoclip.lua",
 				name = "neoclip",
-				config = { keys = { telescope = { i = { paste = '<c-j>' } } } }
+				opts = { keys = { telescope = { i = { paste = '<c-j>' } } } }
 			},
 		},
 	},
@@ -55,7 +55,7 @@ local plugins = {
 	{
 		'folke/trouble.nvim',
 		cmd = "TroubleToggle",
-		config = {
+		opts = {
 			action_keys = {
 				close = { 'gl', 'q' }
 			}
@@ -64,7 +64,7 @@ local plugins = {
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
-		config = { map_c_h = true, map_c_w = true }
+		opts = { map_c_h = true, map_c_w = true }
 	},
 	{ 'lewis6991/gitsigns.nvim',
 		event = "VeryLazy",
@@ -233,7 +233,7 @@ local lsp = {
 			{ 'hrsh7th/cmp-cmdline' },
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'hrsh7th/cmp-nvim-lua' },
-			{ 'kadobot/cmp-plugins', config = { files = { "plugins.lua" } } },
+			{ 'kadobot/cmp-plugins', opts = { files = { "plugins.lua" } } },
 			{ 'chrisgrieser/cmp-nerdfont' },
 			{ 'L3MON4D3/LuaSnip', version = "ea7d7ea510c641c4f15042becd27f35b3e5b3c2b" },
 			{ 'rafamadriz/friendly-snippets' },
