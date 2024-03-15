@@ -110,7 +110,8 @@ local plugins = {
 		event = "VeryLazy",
 		config = function()
 			require("user.lsp.null-ls")
-		end
+		end,
+		enabled = false,
 	},
 	{
 		'lukas-reineke/lsp-format.nvim',
