@@ -10,6 +10,17 @@ if not vim.fn.has('linux') then
 	)
 end
 
+vim.api.nvim_create_autocmd(
+	{"ExitPre"},
+
+	{
+		callback = function()
+			vim.cmd("LspStop 1 2 3 4 5 6")
+			-- vim.lsp.stop_client(vim.lsp.get_clients())
+		end
+	}
+)
+
 -- local function get_git_root()
 -- 	local dot_git_path = vim.fn.finddir(".git", ".;")
 -- 	return vim.fn.fnamemodify(dot_git_path, ":h")
