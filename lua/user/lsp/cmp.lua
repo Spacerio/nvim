@@ -127,6 +127,7 @@ cmp.setup({
 					plugins = "",
 					nerdfont = "[NF]",
 					orgmode = "[ORG]",
+					neodev = " ",
 				})[entry.source.name]
 			return vim_item
 		end,
