@@ -124,7 +124,7 @@ compact_dropdown = themes.get_dropdown { previewer = false, hidden = true }
 extensions = require('telescope').extensions
 map('n', '<C-n>', "<cmd>Telescope builtin<cr>", opts)
 map('n', '<M-g>', "<cmd>lua builtin.live_grep(themes.get_ivy())<cr>", opts)
-map('n', '<leader>b', '<cmd>Telescope file_browser<cr>', opts)
+map('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
 map('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', opts)
