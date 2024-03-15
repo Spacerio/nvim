@@ -3,7 +3,7 @@ local dap = require("dap")
 local dapui = require("dapui")
 
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "rust_analyzer", "bashls" },
+	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 }
 
 local rt = require("rust-tools")
