@@ -2,6 +2,8 @@ require('mason').setup()
 -- local dap = require("dap")
 -- local dapui = require("dapui")
 
+require("neodev").setup({})
+
 require("mason-lspconfig").setup {
 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 }
@@ -21,7 +23,6 @@ local lsp_remaps = function(bufnr)
 		local opts = { remap = true, silent = true, buffer = bufnr }
 		vim.keymap.set(m, lhs, rhs, opts)
 	end
-
 	map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 	map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
 	map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
@@ -52,21 +53,15 @@ local opts = {
 
 require('mason-lspconfig').setup_handlers({
 	function(server_name)
-		-- local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
-		-- if has_custom_opts then
-		-- 	opts = vim.tbl_deep_extend("force", opts, custom_opts)
-		-- end
-		lspconfig[server_name].setup(opts)
+		local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+		local server_opts
+		if has_custom_opts then
+			server_opts = vim.tbl_deep_extend("force", opts, custom_opts)
+		end
+		lspconfig[server_name].setup(server_opts or opts)
 	end,
 })
 
--- require("lspconfig").asm_lsp.setup {
--- 	on_attach = lsp_attach,
--- 	capabilities = lsp_capabilities,
--- 	cmd = { "asm-lsp" },
--- 	single_file_support = true,
--- }
---
 -- local signs = {
 -- 	{ name = "DiagnosticSignError", text = "" },
 -- 	{ name = "DiagnosticSignWarn", text = "" },
@@ -77,12 +72,12 @@ require('mason-lspconfig').setup_handlers({
 -- for _, sign in ipairs(signs) do
 -- 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 -- end
---
+
 vim.diagnostic.config({
 	virtual_text = true,
-	signs = {
-		active = signs,
-	},
+	-- signs = {
+	-- 	active = signs,
+	-- },
 	update_in_insert = true,
 	underline = true,
 	severity_sort = true,
@@ -95,6 +90,7 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 })
+
 --
 -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 -- 	border = "rounded",
