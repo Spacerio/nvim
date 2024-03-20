@@ -1,14 +1,20 @@
 require('mason').setup()
-local dap = require("dap")
-local dapui = require("dapui")
+-- local dap = require("dap")
+-- local dapui = require("dapui")
 
 require("mason-lspconfig").setup {
 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 }
 
-local rt = require("rust-tools")
+-- local rt = require("rust-tools")
 
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local lsp_capabilities = vim.tbl_deep_extend("force",
+  vim.lsp.protocol.make_client_capabilities(),
+  require('cmp_nvim_lsp').default_capabilities()
+)
+-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 local lsp_remaps = function(bufnr)
 	local map = function(m, lhs, rhs)
@@ -35,8 +41,6 @@ local function lsp_attach(client, bufnr)
 	lsp_remaps(bufnr)
 end
 
-require("neodev").setup()
-
 local lspconfig = require('lspconfig')
 
 local opts = {
@@ -48,39 +52,39 @@ local opts = {
 
 require('mason-lspconfig').setup_handlers({
 	function(server_name)
-		local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
-		if has_custom_opts then
-			opts = vim.tbl_deep_extend("force", opts, custom_opts)
-		end
+		-- local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+		-- if has_custom_opts then
+		-- 	opts = vim.tbl_deep_extend("force", opts, custom_opts)
+		-- end
 		lspconfig[server_name].setup(opts)
 	end,
 })
 
-require("lspconfig").asm_lsp.setup {
-	on_attach = lsp_attach,
-	capabilities = lsp_capabilities,
-	cmd = { "asm-lsp" },
-	single_file_support = true,
-}
-
-local signs = {
-	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
-}
-
-for _, sign in ipairs(signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
+-- require("lspconfig").asm_lsp.setup {
+-- 	on_attach = lsp_attach,
+-- 	capabilities = lsp_capabilities,
+-- 	cmd = { "asm-lsp" },
+-- 	single_file_support = true,
+-- }
+--
+-- local signs = {
+-- 	{ name = "DiagnosticSignError", text = "" },
+-- 	{ name = "DiagnosticSignWarn", text = "" },
+-- 	{ name = "DiagnosticSignHint", text = "" },
+-- 	{ name = "DiagnosticSignInfo", text = "" },
+-- }
+--
+-- for _, sign in ipairs(signs) do
+-- 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+-- end
+--
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = {
 		active = signs,
 	},
 	update_in_insert = true,
-	underline = false,
+	underline = true,
 	severity_sort = true,
 	float = {
 		focusable = false,
@@ -91,69 +95,69 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 })
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
-	width = 60,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
-	width = 60,
-})
-
-local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
-local codelldb_adapter = {
-	type = "server",
-	port = "${port}",
-	executable = {
-		command = mason_path .. "bin/codelldb",
-		args = { "--port", "${port}" },
-	},
-}
-
-rt.setup({
-	server = {
-		on_attach = function(client, bufnr)
-			lsp_attach(client, bufnr)
-			vim.keymap.set('n', 'go', rt.hover_actions.hover_actions, { remap = true, buffer = bufnr })
-		end,
-		standalone = true,
-	},
-	dap = {
-		adapter = codelldb_adapter
-	},
-	tools = {
-		reload_workspace_from_cargo_toml = true,
-		runnables = {
-			use_telescope = true,
-		},
-		inlay_hints = {
-			max_len_align = true,
-		}
-	}
-})
-
-dap.adapters.codelldb = codelldb_adapter
-dap.configurations.rust = {
-	{
-		name = "Launch file",
-		type = "codelldb",
-		request = "launch",
-		program = function()
-			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-		end,
-		cwd = "${workspaceFolder}",
-		stopOnEntry = false,
-	},
-}
-
-dap.listeners.after.event_initialized["dapui_config"] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-	dapui.close()
-end
+--
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+-- 	border = "rounded",
+-- 	width = 60,
+-- })
+--
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+-- 	border = "rounded",
+-- 	width = 60,
+-- })
+--
+-- local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+-- local codelldb_adapter = {
+-- 	type = "server",
+-- 	port = "${port}",
+-- 	executable = {
+-- 		command = mason_path .. "bin/codelldb",
+-- 		args = { "--port", "${port}" },
+-- 	},
+-- }
+--
+-- rt.setup({
+-- 	server = {
+-- 		on_attach = function(client, bufnr)
+-- 			lsp_attach(client, bufnr)
+-- 			vim.keymap.set('n', 'go', rt.hover_actions.hover_actions, { remap = true, buffer = bufnr })
+-- 		end,
+-- 		standalone = true,
+-- 	},
+-- 	dap = {
+-- 		adapter = codelldb_adapter
+-- 	},
+-- 	tools = {
+-- 		reload_workspace_from_cargo_toml = true,
+-- 		runnables = {
+-- 			use_telescope = true,
+-- 		},
+-- 		inlay_hints = {
+-- 			max_len_align = true,
+-- 		}
+-- 	}
+-- })
+--
+-- dap.adapters.codelldb = codelldb_adapter
+-- dap.configurations.rust = {
+-- 	{
+-- 		name = "Launch file",
+-- 		type = "codelldb",
+-- 		request = "launch",
+-- 		program = function()
+-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+-- 		end,
+-- 		cwd = "${workspaceFolder}",
+-- 		stopOnEntry = false,
+-- 	},
+-- }
+--
+-- dap.listeners.after.event_initialized["dapui_config"] = function()
+-- 	dapui.open()
+-- end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+-- 	dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+-- 	dapui.close()
+-- end

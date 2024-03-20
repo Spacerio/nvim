@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+require("neodev").setup()
 
 local has_words_before = function()
 	unpack = unpack or table.unpack
@@ -77,6 +78,7 @@ cmp.setup({
 		},
 	},
 	performance = {
+		async_budget = 1,
 		debounce = 1,
 		throttle = 1,
 	},
@@ -113,6 +115,7 @@ cmp.setup({
 	}),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
+		expandable_indicator = true,
 		format = function(entry, vim_item)
 			-- vim_item.kind = string.format("%s", icons[vim_item.kind])
 			vim_item.kind = string.format('%s ', icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
@@ -127,11 +130,41 @@ cmp.setup({
 					plugins = "",
 					nerdfont = "[NF]",
 					orgmode = "[ORG]",
-					neodev = " ",
 				})[entry.source.name]
 			return vim_item
 		end,
 	},
+	enabled = function ()
+        -- if require"cmp.config.context".in_treesitter_capture("comment")==true or require"cmp.config.context".in_syntax_group("Comment") then
+        --   return false
+        -- else
+        --   return true
+        -- end
+        if vim.bo.ft == "TelescopePrompt" then
+            return false
+        end
+        if vim.bo.ft == "markdown" then
+            return false
+        end
+        local lnum, col =
+            vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
+        for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
+            syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
+            if vim.fn.synIDattr(syn_id, "name") == "Comment" then
+                return false
+            end
+        end
+        -- if vim.tbl_contains(Get_treesitter_hl(), "TSComment") then
+        --     return false
+        -- end
+        if string.find(vim.api.nvim_buf_get_name(0), "neorg://") then
+            return false
+        end
+        if string.find(vim.api.nvim_buf_get_name(0), "s_popup:/") then
+            return false
+        end
+        return true
+	end
 })
 
 cmp.setup.cmdline({ '/', '?' }, {
@@ -155,38 +188,5 @@ cmp.event:on(
 	'confirm_done',
 	cmp_autopairs.on_confirm_done()
 )
-
-cmp.setup.enabled = function()
-        -- if require"cmp.config.context".in_treesitter_capture("comment")==true or require"cmp.config.context".in_syntax_group("Comment") then
-        --   return false
-        -- else
-        --   return true
-        -- end
-        if vim.bo.ft == "TelescopePrompt" then
-            return false
-        end
-        if vim.bo.ft == "markdown" then
-            return false
-        end
-        local lnum, col =
-            vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
-        for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
-            syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
-            if vim.fn.synIDattr(syn_id, "name") == "Comment" then
-                return false
-            end
-        end
-        if vim.tbl_contains(Get_treesitter_hl(), "TSComment") then
-            return false
-        end
-        if string.find(vim.api.nvim_buf_get_name(0), "neorg://") then
-            return false
-        end
-        if string.find(vim.api.nvim_buf_get_name(0), "s_popup:/") then
-            return false
-        end
-        return true
-    end
-
 
 require("user.snip")

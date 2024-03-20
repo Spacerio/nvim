@@ -132,21 +132,21 @@ local plugins = {
 		'skywind3000/asyncrun.vim',
 		cmd = "AsyncRun",
 	},
-	{
-		'mfussenegger/nvim-dap',
-		-- event = "VeryLazy",
-		cmd = "Dap",
-		setup = true,
-		dependencies = {
-			{
-				'rcarriga/nvim-dap-ui',
-				config = true,
-			},
-			{
-				'jay-babu/mason-nvim-dap.nvim'
-			},
-		},
-	},
+	-- {
+	-- 	'mfussenegger/nvim-dap',
+	-- 	-- event = "VeryLazy",
+	-- 	cmd = "Dap",
+	-- 	setup = true,
+	-- 	dependencies = {
+	-- 		{
+	-- 			'rcarriga/nvim-dap-ui',
+	-- 			config = true,
+	-- 		},
+	-- 		{
+	-- 			'jay-babu/mason-nvim-dap.nvim'
+	-- 		},
+	-- 	},
+	-- },
 	{
 		'numToStr/Comment.nvim',
 		event = 'VeryLazy',
