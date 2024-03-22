@@ -172,7 +172,7 @@ local make = function()
 	local ft = vim.bo.filetype
 	local make = function()
 		if vim.fn.filereadable("makefile") then
-			vim.cmd("vs | term make")
+			vim.cmd("vs | term make %<")
 		else
 			vim.cmd("! g++ % -o %<")
 			vim.cmd("vs | term ./%<")
