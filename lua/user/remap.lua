@@ -157,11 +157,22 @@ map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
 --Terminal window, visual glitches
 map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
 
+
+--CompetiTest
+map('n', '<leader>cr', '<cmd>CompetiTest run<cr>', opts)
+map('n', '<leader>cc', '<cmd>CompetiTest receive contest<cr>', opts)
+map('n', '<leader>cp', '<cmd>CompetiTest receive problem<cr>', opts)
+map('n', '<leader>ct', '<cmd>CompetiTest receive testcases<cr>', opts)
+map('n', '<leader>cu', '<cmd>CompetiTest show_ui<cr>', opts)
+map('n', '<leader>ca', '<cmd>CompetiTest add_testcase<cr>', opts)
+map('n', '<leader>ce', '<cmd>CompetiTest edit_testcase<cr>', opts)
+map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
+
 local make = function()
 	local ft = vim.bo.filetype
 	local make = function()
 		if vim.fn.filereadable("makefile") then
-			vim.cmd("vs | term make")
+			vim.cmd("vs | term make %<")
 		else
 			vim.cmd("! g++ % -o %<")
 			vim.cmd("vs | term ./%<")
