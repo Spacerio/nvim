@@ -36,6 +36,8 @@ local lsp_remaps = function(bufnr)
 	map('n', 'gl', '<cmd>TroubleToggle<cr>')
 	map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 	map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+	map('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>')
+	map('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>')
 end
 
 local function lsp_attach(client, bufnr)
