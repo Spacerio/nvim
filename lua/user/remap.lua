@@ -71,7 +71,7 @@ map('i', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 map('s', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 
 --harpoon
-map('n', '<M-j><M-i>', ':lua require("harpoon.mark").add_file()<cr>', opts)
+map('n', '<M-j>i', ':lua require("harpoon.mark").add_file()<cr>', opts)
 map('n', '<M-u>', ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
 map('n', '<M-y>', ':lua require("harpoon.cmd-ui").toggle_quick_menu()<cr>', opts)
 map('n', '<M-j><M-a>', ':lua require("harpoon.ui").nav_file(1)<cr>', opts)
