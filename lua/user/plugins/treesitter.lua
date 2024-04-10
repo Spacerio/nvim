@@ -18,9 +18,10 @@ configs.setup({
 		enable = true,
 	},
 	indent = { enable = true, disable = { "css" } },
+	sync_install = false,
 })
 
 require("orgmode").setup {
 	org_agenda_files = { '~/notes/*' },
-	org_defaoult_notes_file = '~/notes/refile.org' 
+	org_defaoult_notes_file = '~/notes/refile.org'
 }
