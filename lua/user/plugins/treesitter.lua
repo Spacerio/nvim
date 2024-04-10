@@ -3,8 +3,6 @@ if not status_ok then
 	return
 end
 
-require("orgmode").setup_ts_grammar()
-
 configs.setup({
 	auto_install = true,
 	ensure_installed = { "rust", "lua", "help", "c", "cpp", "org", }, -- one of "all" or a list of languages
