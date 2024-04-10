@@ -34,10 +34,10 @@ map('c', '<C-f>', '<Right>', {})
 map('c', '<C-a>', '<Home>', {})
 
 --Split navigation
--- map('n', '<C-h>', '<C-w>h', opts)
--- map('n', '<C-l>', '<C-w>l', opts)
--- map('n', '<C-j>', '<C-w>j', opts)
--- map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+map('n', '<C-k>', '<C-w>k', opts)
 
 -- map ö to ;
 map('n', 'ö', ';', opts)
