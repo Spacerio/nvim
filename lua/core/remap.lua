@@ -107,9 +107,9 @@ map('n', '<leader>on', ':tabe<cr>:cd ~/Documents/Notes<cr>:Telescope find_files<
 -- map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
 -- map('n', '<leader>rr', '<cmd>vs | term cargo run<cr>i', opts)
 
-map('n', 'gz', '<cmd>ZenMode<cr>', opts)
+-- map('n', 'gz', '<cmd>ZenMode<cr>', opts)
 
-map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
+-- map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
 --Format on keymap
 map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
@@ -143,9 +143,9 @@ map('n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
 -- map('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true root_dir="~/Documents"<cr>', opts)
 -- map('n', '<leader>p', '<cmd>Telescope projects<cr>', opts)
 
--- Leap.nvim
-map('n', '\\', '<plug>(leap-forward-to)', opts)
-map('n', '|', '<plug>(leap-backward-to)', opts)
+-- -- Leap.nvim
+-- map('n', '\\', '<plug>(leap-forward-to)', opts)
+-- map('n', '|', '<plug>(leap-backward-to)', opts)
 
 --Unbind visual K and J
 map('v', 'K', '', opts)
@@ -158,15 +158,15 @@ map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
 map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
 
 
---CompetiTest
-map('n', '<leader>cr', '<cmd>CompetiTest run<cr>', opts)
-map('n', '<leader>cc', '<cmd>CompetiTest receive contest<cr>', opts)
-map('n', '<leader>cp', '<cmd>CompetiTest receive problem<cr>', opts)
-map('n', '<leader>ct', '<cmd>CompetiTest receive testcases<cr>', opts)
-map('n', '<leader>cu', '<cmd>CompetiTest show_ui<cr>', opts)
-map('n', '<leader>ca', '<cmd>CompetiTest add_testcase<cr>', opts)
-map('n', '<leader>ce', '<cmd>CompetiTest edit_testcase<cr>', opts)
-map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
+-- --CompetiTest
+-- map('n', '<leader>cr', '<cmd>CompetiTest run<cr>', opts)
+-- map('n', '<leader>cc', '<cmd>CompetiTest receive contest<cr>', opts)
+-- map('n', '<leader>cp', '<cmd>CompetiTest receive problem<cr>', opts)
+-- map('n', '<leader>ct', '<cmd>CompetiTest receive testcases<cr>', opts)
+-- map('n', '<leader>cu', '<cmd>CompetiTest show_ui<cr>', opts)
+-- map('n', '<leader>ca', '<cmd>CompetiTest add_testcase<cr>', opts)
+-- map('n', '<leader>ce', '<cmd>CompetiTest edit_testcase<cr>', opts)
+-- map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
 
 -- local make = function()
 -- 	local ft = vim.bo.filetype
@@ -237,3 +237,4 @@ map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
 -- end
 --
 -- map("n", "<C-p>", project_files, opts)
+map("n", "<leader>l", "<cmd>Lazy<cr>", opts)
