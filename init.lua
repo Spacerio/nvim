@@ -24,6 +24,9 @@ local opts = {
 	},
 	install = {
 		colorscheme = { "catpuccin" }
+	},
+	change_detection = {
+		notify = false
 	}
 }
 
