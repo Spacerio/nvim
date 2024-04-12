@@ -36,6 +36,10 @@ return {
 			name = "neoclip",
 			opts = { keys = { telescope = { i = { paste = '<c-j>' } } } }
 		},
+		{
+			"folke/todo-comments.nvim",
+			opts = { }
+		},
 	},
 	config = config,
 
@@ -48,7 +52,7 @@ return {
 		vim.keymap.set('n', '<leader>fB', "<cmd>Telescope builtin<cr>", opts),
 		vim.keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts),
 		vim.keymap.set('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', opts),
-		vim.keymap.set('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts),
+		vim.keymap.set('n', '<leader>fs', '<cmd>Telescope treesitter<cr>', opts),
 		vim.keymap.set('n', '<leader>fO', '<cmd>Telescope vim_options<cr>', opts),
 		vim.keymap.set('n', '<leader>ft', '<cmd>Telescope filetypes<cr>', opts),
 		vim.keymap.set('n', '<leader>fc', '<cmd>Telescope command_history<cr>', opts),
@@ -60,7 +64,7 @@ return {
 		vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', opts),
 		vim.keymap.set('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts),
 		vim.keymap.set('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts),
-		vim.keymap.set('n', '<leader>fs', '<cmd>Telescope symbols<cr>', opts),
+		vim.keymap.set('n', '<leader>fS', '<cmd>Telescope symbols<cr>', opts),
 		vim.keymap.set('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts),
 		vim.keymap.set('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts),
 		vim.keymap.set('n', '<leader>p', '<cmd>Telescope projects<cr>', opts),
