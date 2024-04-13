@@ -46,11 +46,7 @@ local config = function()
 	require('mason-lspconfig').setup_handlers({
 		function(server_name)
 			local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
-			local server_opts
-			if has_custom_opts then
-				server_opts = vim.tbl_deep_extend("force", opts, custom_opts)
-			end
-			lspconfig[server_name].setup(server_opts or opts)
+			lspconfig[server_name].setup(has_custom_opts and vim.tbl_deep_extend("force", opts, custom_opts) or opts)
 		end,
 	})
 
@@ -103,6 +99,15 @@ end
 				}
 			}
 		},
+		{
+			"ray-x/lsp_signature.nvim",
+			event = "VeryLazy",
+			opts = {
+				floating_window = false,
+				-- hint_inline = function() return 'eol' end,
+			},
+			-- config = function(_, opts) require("lsp_signature").setup(opts) end
+		}
 	},
 	keys = {
 		vim.keymap.set('n', '<leader>m', '<cmd>Mason<cr>', {silent = true})
