@@ -16,7 +16,7 @@ local config = function()
 			follow_files = true
 		},
 		attach_to_untracked = true,
-		current_line_blame = true,
+		current_line_blame = false,
 		current_line_blame_opts = {
 			virt_text = true,
 			virt_text_pos = "right_align",
@@ -31,4 +31,6 @@ return {
 	'lewis6991/gitsigns.nvim',
 	event = "VeryLazy",
 	config = config,
+	keys = {
+		vim.keymap.set("n", "gK", "<cmd>Gitsigns blame_line<cr>", {silent = true}) }
 }
