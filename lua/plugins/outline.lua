@@ -1,12 +1,14 @@
 return {
-	'simrat39/symbols-outline.nvim',
-	config = function()
-		require("symbols-outline").setup({
+	'hedyhli/outline.nvim',
+	opts = {
+		outline_window = {
 			auto_close = true,
-		})
-	end,
-	cmd = "SymbolsOutline",
+			show_numbers = true,
+			show_relative_numbers = true,
+		}
+	},
+	cmd = "Outline",
 	keys = {
-		 vim.keymap.set('n', 'go', '<cmd>SymbolsOutline<cr>')
+		 vim.keymap.set('n', 'go', '<cmd>Outline<cr>')
 	}
 }
