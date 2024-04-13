@@ -155,7 +155,7 @@ map('n', '<leader>cc', '<cmd>cd $NVIM<cr>', opts)
 map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
 
 --Terminal window, visual glitches
-map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
+map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 
 
 -- --CompetiTest
