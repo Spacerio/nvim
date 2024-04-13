@@ -94,7 +94,7 @@ end
 				library = {
 					enabled = true,
 					runtime = true,
-					plugins = true,
+					plugins = false,
 					types = true,
 				}
 			}
