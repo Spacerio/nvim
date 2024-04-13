@@ -1,14 +1,29 @@
 return {
 	{
-		"vhyrro/luarocks.nvim",
-		priority = 5000,
+		"nvim-neorg/neorg",
+		dependencies = { "vhyrro/luarocks.nvim", priority = 5000, config = true },
+		enabled = false,
+		cmd = "Neorg",
+		lazy = false,
+		version = "*",
 		config = true,
-	},
-	{
-    "nvim-neorg/neorg",
-    dependencies = { "luarocks.nvim" },
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-    version = "*", -- Pin Neorg to the latest stable release
-    config = true,
+		opts = {
+			load = {
+				["core.defaults"] = {},
+				["core.keybinds"] = {
+					config = { neorg_leader = "<leader>" }
+				},
+				["core.concealer"] = {},
+				["core.dirman"] = {
+					config = {
+						workspaces = {
+							notes = "~/notes",
+						},
+						default_workspace = "notes",
+					}
+				},
+			},
+			["core.completion"] = { config = { engine = "nvim-cmp", name = "[Norg]" } },
+		}
 	},
 }
