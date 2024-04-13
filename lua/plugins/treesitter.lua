@@ -10,12 +10,12 @@ local config = function()
 			-- disable = { "markdown" }, -- list of language that will be disabled
 			additional_vim_regex_highlighting = {'org'},
 		},
-		autopairs = {
-			enable = true,
-		},
-		indent = { 
+		indent = {
 			enable = true,
 			disable = { "css" }
+		},
+		endwise = {
+			enable = true,
 		},
 		textobjects = {
 			select = {
@@ -43,12 +43,8 @@ return {
 	dependencies = {
 		{
 			"nvim-orgmode/orgmode",
+			"RRethy/nvim-treesitter-endwise",
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			{
-				'windwp/nvim-autopairs',
-				config = true,
-				opts = { map_c_h = true, map_c_w = true }
-			}
 		}
 	}
 }

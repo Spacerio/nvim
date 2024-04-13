@@ -151,13 +151,6 @@ local config = function()
 			end
 		})
 
-		-- cmp.setup.cmdline({ '/', '?' }, {
-		-- 	mapping = cmp.mapping.preset.cmdline(),
-		-- 	sources = {
-		-- 		{ name = 'buffer' }
-		-- 	}
-		-- })
-
 		cmp.setup.cmdline(':', {
 			mapping = cmp.mapping.preset.cmdline(maps),
 			-- completion = { autocomplete = { enabled = true } },
@@ -168,10 +161,10 @@ local config = function()
 			})
 		})
 
-		local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-		cmp.event:on(
-			'confirm_done', cmp_autopairs.on_confirm_done()
-		)
+		-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+		-- cmp.event:on(
+		-- 	'confirm_done', cmp_autopairs.on_confirm_done()
+		-- )
 
 		require("user.snip")
 end
@@ -191,5 +184,9 @@ return { 'hrsh7th/nvim-cmp',
 		{ 'L3MON4D3/LuaSnip', version = "v2.*" },
 		{ 'rafamadriz/friendly-snippets' },
 		{ 'folke/neodev.nvim' },
+		-- {
+		-- 	'windwp/nvim-autopairs',
+		-- 	opts = { map_c_h = true, map_c_w = true }
+		-- }
 	}
 }
