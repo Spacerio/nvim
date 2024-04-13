@@ -1,17 +1,12 @@
 local config = function()
 	require('mason').setup()
-	-- require("neodev").setup({
-	-- 	enabled = false,
-	-- 	runtime = false,
-	-- 	plugins = false,
-	-- })
 	require("mason-lspconfig").setup {
 		ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 	}
 
 	local lsp_capabilities = vim.tbl_deep_extend("force",
-	vim.lsp.protocol.make_client_capabilities(),
-	require('cmp_nvim_lsp').default_capabilities()
+		vim.lsp.protocol.make_client_capabilities(),
+		require('cmp_nvim_lsp').default_capabilities()
 	)
 	-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
@@ -50,7 +45,12 @@ local config = function()
 	local lspconfig = require('lspconfig')
 	require('mason-lspconfig').setup_handlers({
 		function(server_name)
-			lspconfig[server_name].setup(opts)
+			local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+			local server_opts
+			if has_custom_opts then
+				server_opts = vim.tbl_deep_extend("force", opts, custom_opts)
+			end
+			lspconfig[server_name].setup(server_opts or opts)
 		end,
 	})
 
@@ -91,7 +91,18 @@ end
 		{ 'williamboman/mason.nvim', },
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ 'simrat39/rust-tools.nvim' },
-		{ 'folke/neodev.nvim' },
+		{ 
+			'folke/neodev.nvim',
+			enabled = true,
+			opts = {
+				library = {
+					enabled = true,
+					runtime = true,
+					plugins = false,
+					types = true,
+				}
+			}
+		},
 	},
 	keys = {
 		vim.keymap.set('n', '<leader>m', '<cmd>Mason<cr>', {silent = true})
