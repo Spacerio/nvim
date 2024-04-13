@@ -20,16 +20,6 @@ return {
 		}
 	},
 	{
-		'folke/trouble.nvim',
-		cmd = "TroubleToggle",
-		opts = {
-			action_keys = {
-				close = { 'gl', 'q' }
-			}
-		},
-		keys = {{ "gl", "<cmd>TroubleToggle<cr>", silent = true, noremap = true}}
-	},
-	{
 		'theprimeagen/vim-be-good',
 		cmd = "VimBeGood",
 	},

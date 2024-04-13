@@ -16,15 +16,15 @@ local config = function()
 		vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
 		vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
 		vim.keymap.set('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-		vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+		vim.keymap.set('n', 'gO', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
 		vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
 		vim.keymap.set('n', 'ga', '<cmd>Telescope treesitter<cr>', opts)
 		vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 		vim.keymap.set('x', 'gs', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts)
-		vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_document_symbols<cr>', opts)
+		-- vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_document_symbols<cr>', opts)
 		-- Diagnostics
-		vim.keymap.set('n', 'gl', '<cmd>TroubleToggle<cr>', opts)
+		-- vim.keymap.set('n', 'gl', '<cmd>TroubleToggle<cr>', opts)
 		vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
 		vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 		vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
@@ -94,7 +94,7 @@ end
 				library = {
 					enabled = true,
 					runtime = true,
-					plugins = false,
+					plugins = true,
 					types = true,
 				}
 			}
@@ -104,9 +104,7 @@ end
 			event = "VeryLazy",
 			opts = {
 				floating_window = false,
-				-- hint_inline = function() return 'eol' end,
 			},
-			-- config = function(_, opts) require("lsp_signature").setup(opts) end
 		}
 	},
 	keys = {
