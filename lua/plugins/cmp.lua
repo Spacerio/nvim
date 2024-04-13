@@ -1,7 +1,6 @@
 local config = function()
 	local cmp = require('cmp')
 	local luasnip = require('luasnip')
-	require("neodev").setup()
 
 	local icons = {
 		Text = "󰊄",
@@ -49,6 +48,34 @@ local config = function()
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
+	local maps = {
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs( -1), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		["<CR>"] = cmp.mapping.confirm { select = false },
+		["<C-l>"] = cmp.mapping {
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		},
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if not has_words_before() then
+				fallback()
+			elseif luasnip.expandable() then
+				luasnip.expand()
+			elseif cmp.visible() then
+				cmp.confirm { select = true }
+			elseif luasnip.jumpable(1) then
+				luasnip.jump(1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function()
+			luasnip.jump( -1)
+		end ),
+	}
+
 	cmp.setup({
 		snippet = {
 			expand = function(args)
@@ -64,16 +91,16 @@ local config = function()
 			{ name = 'plugins' },
 			{ name = 'nerdfont' },
 			{ name = 'orgmode' },
-			{ name = 'neodev' },
 		}),
 		view = {
-			entries = "custom"
+			entries = "custom",
 		},
 		window = {
 			-- completion = {
 				-- 	scrollbar = true,
 				-- 	border = border,
 				-- 	winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+				--  enabled = true,
 				-- },
 				documentation = {
 					border = border,
@@ -84,36 +111,7 @@ local config = function()
 				debounce = 1,
 				throttle = 1,
 			},
-			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping {
-					i = cmp.mapping.select_prev_item(),
-					c = cmp.config.disable,
-				},
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs( -1), { "i", "c" }),
-				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-				["<CR>"] = cmp.mapping.confirm { select = false },
-				["<C-l>"] = cmp.mapping {
-					i = cmp.mapping.abort(),
-					c = cmp.mapping.close(),
-				},
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if not has_words_before() then
-						fallback()
-					elseif luasnip.expandable() then
-						luasnip.expand()
-					elseif cmp.visible() then
-						cmp.confirm { select = true }
-					elseif luasnip.jumpable(1) then
-						luasnip.jump(1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
-				["<S-Tab>"] = cmp.mapping(function()
-					luasnip.jump( -1)
-				end ),
-			}),
+			mapping = cmp.mapping.preset.insert(maps),
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				expandable_indicator = true,
@@ -161,11 +159,8 @@ local config = function()
 		-- })
 
 		cmp.setup.cmdline(':', {
-			-- FIX: this mapping
-			mapping = cmp.mapping.preset.cmdline({
-				["<C-space>"] = cmp.mapping.complete()
-			}),
-			completion = { autocomplete = false},
+			mapping = cmp.mapping.preset.cmdline(maps),
+			-- completion = { autocomplete = { enabled = true } },
 			sources = cmp.config.sources({
 				{ name = 'path' }
 			}, {
@@ -175,17 +170,14 @@ local config = function()
 
 		local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 		cmp.event:on(
-			'confirm_done',
-			cmp_autopairs.on_confirm_done()
+			'confirm_done', cmp_autopairs.on_confirm_done()
 		)
 
 		require("user.snip")
 end
 
-
-
 return { 'hrsh7th/nvim-cmp',
-	event = { "BufWinEnter", "BufEnter" },
+	event = "VeryLazy",
 	config = config,
 	dependencies = {
 		{ 'hrsh7th/cmp-nvim-lsp' },
