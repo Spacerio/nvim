@@ -44,5 +44,11 @@ return {
 		'j-hui/fidget.nvim',
 		event = "VeryLazy",
 		opts = {}
-	}
+	},
+	-- { -- this breaks telescope through plenary somehow?
+	--    "m4xshen/hardtime.nvim",
+	-- 	event = "VeryLazy",
+	--    -- dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	--    opts = {}
+	-- },
 }
