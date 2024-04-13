@@ -40,4 +40,9 @@ return {
 		'christoomey/vim-tmux-navigator',
 		event = "VeryLazy"
 	},
+	{
+		'j-hui/fidget.nvim',
+		event = "VeryLazy",
+		opts = {}
+	}
 }
