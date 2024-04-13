@@ -33,7 +33,7 @@ local config = function()
 	}
 
 	-- Config
-	config = {
+	local config = {
 		options = {
 			-- Disable sections and component separators
 			component_separators = '',
@@ -186,7 +186,6 @@ local config = function()
 				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
 					return client.name
 				end
-
 			end
 			return msg
 		end,
@@ -246,7 +245,5 @@ end
 return {
 	'nvim-lualine/lualine.nvim',
 	event = "VeryLazy",
-	config = function()
-		require('user.plugins.lualine')
-	end
+	config = config,
 }
