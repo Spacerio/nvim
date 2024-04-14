@@ -87,7 +87,7 @@ end
 		{ 'williamboman/mason.nvim', },
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ 'simrat39/rust-tools.nvim' },
-		{ 
+		{
 			'folke/neodev.nvim',
 			enabled = true,
 			opts = {
@@ -111,4 +111,3 @@ end
 		vim.keymap.set('n', '<leader>m', '<cmd>Mason<cr>', {silent = true})
 	}
 }
-
