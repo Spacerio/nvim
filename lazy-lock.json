@@ -54,5 +54,6 @@
   "vim-be-good": { "branch": "master", "commit": "4fa57b7957715c91326fcead58c1fa898b9b3625" },
   "vim-startuptime": { "branch": "master", "commit": "ac2cccb5be617672add1f4f3c0a55ce99ba34e01" },
   "vim-tmux-navigator": { "branch": "master", "commit": "38b1d0402c4600543281dc85b3f51884205674b6" },
-  "vim-workman": { "branch": "master", "commit": "ffc5b46fe9c32637bc9f4385db0f5f7a54520dfb" }
+  "vim-workman": { "branch": "master", "commit": "ffc5b46fe9c32637bc9f4385db0f5f7a54520dfb" },
+  "vimtex": { "branch": "master", "commit": "7f6817c0dca7793907785dd5edb01761df13572c" }
 }
