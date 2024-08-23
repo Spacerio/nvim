@@ -11,6 +11,18 @@ if not vim.fn.has('linux') then
 end
 
 -- vim.api.nvim_create_autocmd(
+-- 	{"BufWinEnter", "BufEnter"},
+-- 	{
+-- 		group = vim.api.nvim_create_augroup("CloseToc", { clear = true }),
+-- 		pattern = { "qf", "help" },
+-- 		callback = function(ev)
+-- 			print(vim.inspect(ev.buf))
+-- 			vim.keymap.set("<cr>", "<cr><C-w>p:q<cr>", { buffer = true, silent = true})
+-- 		end,
+-- 	}
+-- )
+
+-- vim.api.nvim_create_autocmd(
 -- 	{"ExitPre"},
 -- 	{
 -- 		callback = function()

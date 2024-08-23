@@ -14,7 +14,7 @@ function color(color, transparent)
 	if color == "catppuccin" then
 		require('catppuccin').setup({
 			flavour = "mocha",
-			transparent = false,
+			transparent = true,
 			no_italic = false,
 			integrations = {
 				treesitter = true,
@@ -27,12 +27,17 @@ function color(color, transparent)
 
 	vim.cmd.colorscheme(color)
 
-	if transparent and not vim.g.neovide then
-		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-		vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
-		vim.api.nvim_set_hl(0, "LazyNormal", {bg="#1E1E2E"})
-		vim.api.nvim_set_hl(0, "MasonNormal", {bg="#1E1E2E"})
-	end
+	-- if transparent and not vim.g.neovide then
+	-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+	-- 	vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
+	-- 	vim.api.nvim_set_hl(0, "LazyNormal", {bg="#1E1E2E"})
+	-- 	vim.api.nvim_set_hl(0, "MasonNormal", {bg="#1E1E2E"})
+	-- end
 	require("user.ginit")
+end
+
+---@param transparent boolean
+function ToggleOpacity(transparent)
+
 end

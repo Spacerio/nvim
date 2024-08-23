@@ -1,7 +1,7 @@
 local plugins = {
 	{
 		"folke/tokyonight.nvim",
-		event = "CmdlineEnter"
+		event = "VeryLazy"
 	},
 	{
 		'catppuccin/nvim',
@@ -42,7 +42,7 @@ local plugins = {
 			{
 				"AckslD/nvim-neoclip.lua",
 				name = "neoclip",
-				config = { keys = { telescope = { i = { paste = '<c-j>' } } } }
+				opts = { keys = { telescope = { i = { paste = '<c-j>' } } } }
 			},
 		},
 	},
@@ -55,7 +55,7 @@ local plugins = {
 	{
 		'folke/trouble.nvim',
 		cmd = "TroubleToggle",
-		config = {
+		opts = {
 			action_keys = {
 				close = { 'gl', 'q' }
 			}
@@ -64,7 +64,7 @@ local plugins = {
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
-		config = { map_c_h = true, map_c_w = true }
+		opts = { map_c_h = true, map_c_w = true }
 	},
 	{ 'lewis6991/gitsigns.nvim',
 		event = "VeryLazy",
@@ -110,7 +110,8 @@ local plugins = {
 		event = "VeryLazy",
 		config = function()
 			require("user.lsp.null-ls")
-		end
+		end,
+		enabled = false,
 	},
 	{
 		'lukas-reineke/lsp-format.nvim',
@@ -131,21 +132,21 @@ local plugins = {
 		'skywind3000/asyncrun.vim',
 		cmd = "AsyncRun",
 	},
-	{
-		'mfussenegger/nvim-dap',
-		-- event = "VeryLazy",
-		cmd = "Dap",
-		setup = true,
-		dependencies = {
-			{
-				'rcarriga/nvim-dap-ui',
-				config = true,
-			},
-			{
-				'jay-babu/mason-nvim-dap.nvim'
-			},
-		},
-	},
+	-- {
+	-- 	'mfussenegger/nvim-dap',
+	-- 	-- event = "VeryLazy",
+	-- 	cmd = "Dap",
+	-- 	setup = true,
+	-- 	dependencies = {
+	-- 		{
+	-- 			'rcarriga/nvim-dap-ui',
+	-- 			config = true,
+	-- 		},
+	-- 		{
+	-- 			'jay-babu/mason-nvim-dap.nvim'
+	-- 		},
+	-- 	},
+	-- },
 	{
 		'numToStr/Comment.nvim',
 		event = 'VeryLazy',
@@ -192,28 +193,59 @@ local plugins = {
 		cmd = 'Telekasten',
 		config = function ()
 			require("telekasten").setup({
-				home = "/mnt/c/Users/gr289336/Documents/Notes/" 
+				home = "/mnt/c/Users/gr289336/Documents/Notes/"
 			})
 		end
 	},
 	{ 'milisims/nvim-luaref', event = "VeryLazy" },
-
+	{
+		"folke/zen-mode.nvim",
+		cmd = 'ZenMode',
+		opts = {
+			window = { width = 1 },
+			plugins = { tmux = { enabled = true }}
+		}
+	},
+	{
+		"xeluxee/competitest.nvim",
+		dependencies = "muniftanjim/nui.nvim",
+		cmd = "CompetiTest",
+		keys = "<leader>c",
+		opts = {
+			testcases_use_single_file = true,
+			received_contests_directory = "$(HOME)/projects/$(JUDGE)/$(CONTEST)",
+			received_problems_path = "$(HOME)/projects/$(JUDGE)/$(PROBLEM)/main.$(FEXT)",
+			evaluate_template_modifiers = true,
+			template_file = "~/projects/CSES/template.cpp"
+		},
+	},
+	{
+		"stevearc/oil.nvim",
+		lazy = false,
+		config = function()
+			require("oil").setup({
+				default_file_explorer = true,
+			})
+		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	}
 }
 
 local lsp = {
 	{ 'neovim/nvim-lspconfig',
 		lazy = false,
 		config = function()
-			require('user.lsp')
+			require('user.lsp.handlers')
 		end,
 		dependencies = {
 			{ 'williamboman/mason.nvim', },
 			{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'simrat39/rust-tools.nvim' },
+			{ 'folke/neodev.nvim' },
 		}
 	},
 	{ 'hrsh7th/nvim-cmp',
-		event = {"InsertEnter", "CmdlineEnter"},
+		event = {"InsertEnter", "CmdlineEnter", "VeryLazy"},
 		config = function()
 			require('user.lsp.cmp')
 		end,
@@ -224,11 +256,11 @@ local lsp = {
 			{ 'hrsh7th/cmp-cmdline' },
 			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'hrsh7th/cmp-nvim-lua' },
-			{ 'kadobot/cmp-plugins', config = { files = { "plugins.lua" } } },
+			{ 'kadobot/cmp-plugins', opts = { files = { "plugins.lua" } } },
 			{ 'chrisgrieser/cmp-nerdfont' },
 			{ 'L3MON4D3/LuaSnip', version = "ea7d7ea510c641c4f15042becd27f35b3e5b3c2b" },
 			{ 'rafamadriz/friendly-snippets' },
-			{ 'folke/neodev.nvim', opts = {} },
+			{ 'folke/neodev.nvim' },
 		}
 	},
 }

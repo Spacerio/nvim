@@ -71,7 +71,7 @@ map('i', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 map('s', '<M-k>', '<cmd>lua require("luasnip").jump(1)<cr>', opts)
 
 --harpoon
-map('n', '<M-j><M-i>', ':lua require("harpoon.mark").add_file()<cr>', opts)
+map('n', '<M-j>i', ':lua require("harpoon.mark").add_file()<cr>', opts)
 map('n', '<M-u>', ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
 map('n', '<M-y>', ':lua require("harpoon.cmd-ui").toggle_quick_menu()<cr>', opts)
 map('n', '<M-j><M-a>', ':lua require("harpoon.ui").nav_file(1)<cr>', opts)
@@ -105,10 +105,9 @@ map('n', '<leader>re', ':lua require("dap").terminate()<cr>', opts)
 map('n', '<leader>rl', ':lua require("dap").run_last()<cr>', opts)
 map('n', '<leader>rn', ':RustRunnables<cr>', opts)
 map('n', '<leader>rd', ':RustDebuggables<cr>', opts)
--- map("n", "<leader>rr", ":w<cr>:ToggleTerm size=100 direction=vertical<cr>cls<cr>cargo run<cr>", opts)
-map('n', '<leader>rr', '<cmd>!cargo run<cr>', opts)
+map('n', '<leader>rr', '<cmd>vs | term cargo run<cr>i', opts)
 
--- map('n', '<C-m>', '<cmd>make<cr>', opts)
+map('n', 'gz', '<cmd>ZenMode<cr>', opts)
 
 map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
@@ -116,7 +115,7 @@ map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
 
 -- Delete other buffers
-map('n', '<leader>d', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
+map('n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
 
 --Telescope
 themes = require('telescope.themes')
@@ -125,7 +124,7 @@ compact_dropdown = themes.get_dropdown { previewer = false, hidden = true }
 extensions = require('telescope').extensions
 map('n', '<C-n>', "<cmd>Telescope builtin<cr>", opts)
 map('n', '<M-g>', "<cmd>lua builtin.live_grep(themes.get_ivy())<cr>", opts)
-map('n', '<leader>b', '<cmd>Telescope file_browser<cr>', opts)
+map('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts)
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
 map('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', opts)
@@ -156,37 +155,55 @@ map('n', '<leader>cc', '<cmd>cd $NVIM<cr>', opts)
 map('n', '<leader>co', '<cmd>cd $HOME/Documents/Notes<cr>', opts)
 
 --Terminal window, visual glitches
-map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
+map('n', '<leader>t', ':vs<cr>:terminal<cr>i', opts)
+
+
+--CompetiTest
+map('n', '<leader>cr', '<cmd>CompetiTest run<cr>', opts)
+map('n', '<leader>cc', '<cmd>CompetiTest receive contest<cr>', opts)
+map('n', '<leader>cp', '<cmd>CompetiTest receive problem<cr>', opts)
+map('n', '<leader>ct', '<cmd>CompetiTest receive testcases<cr>', opts)
+map('n', '<leader>cu', '<cmd>CompetiTest show_ui<cr>', opts)
+map('n', '<leader>ca', '<cmd>CompetiTest add_testcase<cr>', opts)
+map('n', '<leader>ce', '<cmd>CompetiTest edit_testcase<cr>', opts)
+map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
 
 local make = function()
 	local ft = vim.bo.filetype
+	local make = function()
+		if vim.fn.filereadable("makefile") then
+			vim.cmd("vs | term make %<")
+		else
+			vim.cmd("! g++ % -o %<")
+			vim.cmd("vs | term ./%<")
+		end
+		vim.api.nvim_input("i")
+	end
 	local case = {
 		lua = function()
+			vim.cmd("w")
 			vim.cmd("source %")
 		end,
 
-		c = function()
-			vim.cmd("make")
-		end,
+		c = make,
 
-		cpp = function ()
-			vim.cmd("vs | term make")
-			vim.api.nvim_input("i")
-		end,
+		-- cpp = function ()
+		-- 	vim.cmd("vs | term make %:r")
+		-- 	vim.api.nvim_input("i")
+		-- end,
+		cpp = make,
 
 		rust = function ()
 			vim.cmd("!cargo run")
+			-- also could use :compiler cargo :make run
 		end,
 
 		python = function()
-			vim.cmd("vsp")
-			vim.cmd("term python3 % i")
+			vim.cmd("vs | term python3 % i")
 			vim.api.nvim_input("i")
 		end,
 
-		default = function()
-			vim.cmd("make")
-		end
+		default = vim.api.nvim_input("<cr>")
 
 	}
 
@@ -194,8 +211,8 @@ local make = function()
 
 	if case[ft] then
 		case[ft]()
-	else
-		case["default"]()
+	-- else
+	-- 	case["default"]()
 	end
 end
 
