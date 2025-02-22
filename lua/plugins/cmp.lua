@@ -161,7 +161,7 @@ local config = function()
 			})
 		})
 
-		require("user.snip")
+		require("util.snip")
 end
 
 return { 'hrsh7th/nvim-cmp',
