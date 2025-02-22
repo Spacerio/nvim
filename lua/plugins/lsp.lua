@@ -1,8 +1,9 @@
 local config = function()
+	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "nil_ls" },
 	require('mason').setup()
-	require("mason-lspconfig").setup {
-		ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
-	}
+	-- require("mason-lspconfig").setup {
+	-- 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
+	-- }
 
 	local lsp_capabilities = vim.tbl_deep_extend("force",
 		vim.lsp.protocol.make_client_capabilities(),
@@ -42,13 +43,26 @@ local config = function()
 		single_file_support = true,
 	}
 
-	local lspconfig = require('lspconfig')
-	require('mason-lspconfig').setup_handlers({
-		function(server_name)
+
+	local setup_servers = function(server_name)
+			local lspconfig = require('lspconfig')
 			local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
 			lspconfig[server_name].setup(has_custom_opts and vim.tbl_deep_extend("force", opts, custom_opts) or opts)
-		end,
-	})
+	end
+	if vim.g.system_id == 'nixos' then
+		for _, server_name in ipairs(ensure_installed) do
+			setup_servers(server_name)
+		end
+	else
+		-- vim.list_extend(ensure_installed, extra_tools)
+		-- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+		-- require('mason-lspconfig').setup { handlers = { setup_servers } }
+		require('mason-lspconfig').setup_handlers({
+			setup_servers
+		})
+	end
+
+
 
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -80,7 +94,7 @@ local config = function()
 	})
 end
 
-	return { 'neovim/nvim-lspconfig',
+return { 'neovim/nvim-lspconfig',
 	lazy = false,
 	config = config,
 	dependencies = {
