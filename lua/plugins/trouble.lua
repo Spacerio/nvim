@@ -1,6 +1,6 @@
 return {
 	'folke/trouble.nvim',
-	cmd = "Trouble",
+	cmd = { "Trouble", "TroubleToggle" },
 	branch = "dev",
 	config = function()
 		require("trouble").setup({
@@ -20,7 +20,7 @@ return {
 		})
 	end,
 	keys = {
-		{ "gl", "<cmd>Trouble show toggle<cr>", silent = true, noremap = true},
+		{ "gl", "<cmd>TroubleToggle document_diagnostics<cr>", silent = true, noremap = true},
 	}
 }
 
