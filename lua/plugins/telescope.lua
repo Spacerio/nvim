@@ -15,6 +15,7 @@ local config = function()
 	-- require("telescope").load_extension("opener")
 	-- require("telescope").load_extension("neoclip")
 	require("telescope").load_extension("helpgrep")
+	require("telescope").load_extension("fzf")
 
 end
 local opts = {noremap = true, silent = true}
@@ -32,6 +33,9 @@ return {
 		'willthbill/opener.nvim',
 		'catgoose/telescope-helpgrep.nvim',
 		{
+			'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
+		},
+		{
 			"AckslD/nvim-neoclip.lua",
 			name = "neoclip",
 			opts = { keys = { telescope = { i = { paste = '<c-j>' } } } }
@@ -44,17 +48,17 @@ return {
 	config = config,
 
 	keys = {
-		vim.keymap.set("n", "<C-p>", require("util.find").project_files, opts),
+		vim.keymap.set("n", "<C-p>", require("util.find").my_find_files, opts),
 		vim.keymap.set('n', '<leader>fg', require("util.find").grep, opts),
-		vim.keymap.set('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true root_dir="~/Documents"<cr>', opts),
+		vim.keymap.set('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true<cr>', opts),
 		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope fd<cr>", {noremap = true, silent = true}),
 		vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts),
 		vim.keymap.set('n', '<leader>fB', "<cmd>Telescope builtin<cr>", opts),
 		vim.keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts),
 		vim.keymap.set('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', opts),
-		vim.keymap.set('n', '<leader>fs', '<cmd>Telescope treesitter<cr>', opts),
+		vim.keymap.set('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts),
 		vim.keymap.set('n', '<leader>fO', '<cmd>Telescope vim_options<cr>', opts),
-		vim.keymap.set('n', '<leader>ft', '<cmd>Telescope filetypes<cr>', opts),
+		vim.keymap.set('n', '<leader>fT', '<cmd>Telescope filetypes<cr>', opts),
 		vim.keymap.set('n', '<leader>fc', '<cmd>Telescope command_history<cr>', opts),
 		vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts),
 		vim.keymap.set('n', '<leader>fH', require("util.find").hgrep, opts),
