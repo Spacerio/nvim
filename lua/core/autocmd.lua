@@ -1,14 +1,23 @@
 local os = require("os")
 
-local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
 
-if not vim.fn.has('linux') then
-	vim.api.nvim_create_autocmd(
-		{"VimEnter"},
+-- filtype settings
+-- https://neovim.io/doc/user/lua.html#lua-filetype
+vim.filetype.add({
+	pattern = {
+		["hypr.*%.conf"] = "hyprlang",
+	}
+})
 
-		{ pattern = "*", command = "cd " .. os.getenv("USERPROFILE"), group = vim_enter_group }
-	)
-end
+-- local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
+--
+-- if not vim.fn.has('linux') then
+-- 	vim.api.nvim_create_autocmd(
+-- 		{"VimEnter"},
+--
+-- 		{ pattern = "*", command = "cd " .. os.getenv("USERPROFILE"), group = vim_enter_group }
+-- 	)
+-- end
 
 -- vim.api.nvim_create_autocmd(
 -- 	{"BufWinEnter", "BufEnter"},
