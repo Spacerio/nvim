@@ -10,9 +10,9 @@ local config = function()
 	-- require("telescope").load_extension("harpoon")
 	-- require("telescope").load_extension("lazygit")
 	-- require("telescope").load_extension("ui-select")
-	-- require("telescope").load_extension("file_browser")
+	require("telescope").load_extension("file_browser")
 	-- require("telescope").load_extension("zoxide")
-	-- require("telescope").load_extension("opener")
+	require("telescope").load_extension("opener")
 	-- require("telescope").load_extension("neoclip")
 	require("telescope").load_extension("helpgrep")
 	if vim.fn.executable("make") == 1 then
@@ -25,7 +25,7 @@ local opts = {noremap = true, silent = true}
 return {
 	'nvim-telescope/telescope.nvim',
 	-- event = "VeryLazy",
-	cmd = "Telescope", 
+	cmd = "Telescope",
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'jvgrootveld/telescope-zoxide',
@@ -55,7 +55,7 @@ return {
 	keys = {
 		vim.keymap.set("n", "<C-p>", require("util.find").my_find_files, opts),
 		vim.keymap.set('n', '<leader>fg', require("util.find").grep, opts),
-		vim.keymap.set('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true<cr>', opts),
+		vim.keymap.set('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true root_dir="~"<cr>', opts),
 		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope fd<cr>", {noremap = true, silent = true}),
 		vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts),
 		vim.keymap.set('n', '<leader>fB', "<cmd>Telescope builtin<cr>", opts),
@@ -67,8 +67,8 @@ return {
 		vim.keymap.set('n', '<leader>fc', '<cmd>Telescope command_history<cr>', opts),
 		vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts),
 		vim.keymap.set('n', '<leader>fH', require("util.find").hgrep, opts),
-		vim.keymap.set('n', '<leader>fp', '<cmd>Telescope man_pages<cr>', opts),
-		vim.keymap.set('n', '<leader>fA', '<cmd>Telescope autocommands<cr>', opts),
+		vim.keymap.set('n', '<leader>fM', '<cmd>Telescope man_pages<cr>', opts),
+		vim.keymap.set('n', '<leader>fa', '<cmd>Telescope autocommands<cr>', opts),
 		vim.keymap.set('n', '<leader>fm', '<cmd>Telescope marks<cr>', opts),
 		vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', opts),
 		vim.keymap.set('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts),
