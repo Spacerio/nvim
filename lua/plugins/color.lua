@@ -4,10 +4,11 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		local transparent = true,
+		local transparent = true
+		transparent = transparent and not vim.g.neovide
 		require('catppuccin').setup({
 			flavour = "mocha",
-			transparent_background = true,
+			transparent_background = transparent,
 			no_italic = false,
 			dim_inactive = {
 				enabled = true,
@@ -23,7 +24,7 @@ return {
 			}
 		})
 		vim.cmd.colorscheme("catppuccin")
-		if transparent and not vim.g.neovide then
+		if transparent then
 			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
