@@ -139,6 +139,9 @@ local config = function()
 				if vim.bo.ft == "markdown" then
 					return false
 				end
+				if vim.bo.ft == "snacks_picker_input" then
+					return false
+				end
 				local lnum, col =
 				vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
 				for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
