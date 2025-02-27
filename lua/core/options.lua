@@ -54,11 +54,12 @@ if vim.g.neovide then
 	)
 end
 
+
+-- check if running on linux
+vim.g.os = vim.loop.os_uname().sysname
+
 -- check if running nixos
-
-local system_name = vim.loop.os_uname().sysname
-
-if system_name == 'Linux' then
+if vim.g.os == 'Linux' then
 	local file = io.open('/etc/os-release', 'r')
 	if file then
     local content = file:read '*all'
