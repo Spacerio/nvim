@@ -15,7 +15,9 @@ local config = function()
 	-- require("telescope").load_extension("opener")
 	-- require("telescope").load_extension("neoclip")
 	require("telescope").load_extension("helpgrep")
-	require("telescope").load_extension("fzf")
+	if vim.fn.executable("make") == 1 then
+		require("telescope").load_extension("fzf")
+	end
 
 end
 local opts = {noremap = true, silent = true}
@@ -33,7 +35,10 @@ return {
 		'willthbill/opener.nvim',
 		'catgoose/telescope-helpgrep.nvim',
 		{
-			'nvim-telescope/telescope-fzf-native.nvim', build = 'make'
+			-- only used on system that can actually compile fzf
+			'nvim-telescope/telescope-fzf-native.nvim',
+			build = 'make',
+			cond = vim.fn.executable("make") == 1,
 		},
 		{
 			"AckslD/nvim-neoclip.lua",
