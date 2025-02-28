@@ -15,6 +15,7 @@ local config = function()
 	require("telescope").load_extension("opener")
 	-- require("telescope").load_extension("neoclip")
 	require("telescope").load_extension("helpgrep")
+	require("telescope").load_extension("project")
 	if vim.fn.executable("make") == 1 then
 		require("telescope").load_extension("fzf")
 	end
@@ -32,6 +33,7 @@ return {
 		'nvim-telescope/telescope-file-browser.nvim',
 		'nvim-telescope/telescope-ui-select.nvim',
 		'nvim-telescope/telescope-symbols.nvim',
+		'nvim-telescope/telescope-project.nvim',
 		'willthbill/opener.nvim',
 		'catgoose/telescope-helpgrep.nvim',
 		{
@@ -76,6 +78,6 @@ return {
 		vim.keymap.set('n', '<leader>fS', '<cmd>Telescope symbols<cr>', opts),
 		-- vim.keymap.set('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts),
 		vim.keymap.set('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts),
-		-- vim.keymap.set('n', '<leader>p', '<cmd>Telescope projects<cr>', opts),
+		vim.keymap.set('n', '<leader>fp', '<cmd>Telescope project<cr>', opts),
 	}
 }
