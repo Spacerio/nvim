@@ -5,10 +5,7 @@ local config = function()
 	-- 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 	-- }
 
-	local lsp_capabilities = vim.tbl_deep_extend("force",
-		vim.lsp.protocol.make_client_capabilities(),
-		require('cmp_nvim_lsp').default_capabilities()
-	)
+	local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 	-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 	local lsp_remaps = function(bufnr)
