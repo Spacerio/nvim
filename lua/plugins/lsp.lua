@@ -46,7 +46,7 @@ local config = function()
 
 	local setup_servers = function(server_name)
 			local lspconfig = require('lspconfig')
-			local has_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+			local has_custom_opts, custom_opts = pcall(require, "util.lsp." .. server_name)
 			lspconfig[server_name].setup(has_custom_opts and vim.tbl_deep_extend("force", opts, custom_opts) or opts)
 	end
 	if vim.g.system_id == 'nixos' then
