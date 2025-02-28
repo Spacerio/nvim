@@ -1,6 +1,7 @@
 return {
 	{
 		'numToStr/Comment.nvim',
+		enabled = false, -- upstreamed to core
 		event = 'VeryLazy',
 		config = true,
 	},
