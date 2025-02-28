@@ -45,6 +45,13 @@ return {
 		event = "VeryLazy",
 		opts = {}
 	},
+	{
+		"nvim-zh/colorful-winsep.nvim",
+		event = { "WinLeave" },
+		opts = {
+			smooth = false,
+		}
+	},
 	-- { -- this breaks telescope through plenary somehow?
 	--    "m4xshen/hardtime.nvim",
 	-- 	event = "VeryLazy",
