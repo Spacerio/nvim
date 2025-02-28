@@ -1,12 +1,14 @@
-local config = function() 
-	require("gitsigns").setup {
-		signs = {
-			add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-			change = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-			delete = { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-			topdelete = { hl = "GitSignsDelete", text = "X", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-			changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-		},
+return {
+	'lewis6991/gitsigns.nvim',
+	event = "VeryLazy",
+	opts = {
+		-- signs = {
+		-- 	add = {text = "▎"},
+		-- 	change = {text = "▎"},
+		-- 	delete = {text = "_"},
+		-- 	topdelete = {text = "_"},
+		-- 	changedelete = {text = "▎"},
+		-- },
 		signcolumn = true,
 		numhl = false,
 		linehl = false,
@@ -24,13 +26,9 @@ local config = function()
 			ignore_whitespace = false,
 		},
 		trouble = true,
-	}
-end
-
-return {
-	'lewis6991/gitsigns.nvim',
-	event = "VeryLazy",
-	config = config,
+	},
 	keys = {
-		vim.keymap.set("n", "gK", "<cmd>Gitsigns blame_line<cr>", {silent = true}) }
+		vim.keymap.set("n", "gk", "<cmd>Gitsigns toggle_current_line_blame<cr>", {silent = true}),
+		vim.keymap.set("n", "gK", "<cmd>Gitsigns blame_line<cr>", {silent = true}),
+	}
 }
