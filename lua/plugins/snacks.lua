@@ -28,7 +28,6 @@ return {
 
 	keys = {
 		{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-		{ "<leader>p", function() Snacks.picker.projects() end, desc = "Project finder" },
 		{ "<leader>ss", function() Snacks.picker() end, desc = "Picker picker" },
 		-- git
 		{ "<leader>gc", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
@@ -62,11 +61,12 @@ return {
 		{ "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
 		{ "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
 		{ "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
-		{ "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
+		{ "<leader>sp", function() Snacks.picker.projects() end, desc = "Project finder" },
 		{ "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
 		{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
 		{ "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 		{ "<leader>sC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+		{ "<leader>sn", function() Snacks.notifier.show_history() end, desc = "Colorschemes" },
 		-- Other
 		{ "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 		{ "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
