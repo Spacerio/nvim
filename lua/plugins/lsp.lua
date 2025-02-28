@@ -102,17 +102,18 @@ return { 'neovim/nvim-lspconfig',
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ 'simrat39/rust-tools.nvim' },
 		{
-			'folke/neodev.nvim',
+			"folke/lazydev.nvim",
 			enabled = true,
+			ft = "lua", -- only load on lua files
 			opts = {
 				library = {
-					enabled = true,
-					runtime = true,
-					plugins = false,
-					types = true,
-				}
-			}
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				},
+			},
 		},
+
 		{
 			"ray-x/lsp_signature.nvim",
 			event = "VeryLazy",
