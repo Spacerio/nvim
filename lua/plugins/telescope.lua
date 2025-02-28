@@ -74,8 +74,8 @@ return {
 		vim.keymap.set('n', '<leader>fe', '<cmd>Telescope registers<cr>', opts),
 		vim.keymap.set('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts),
 		vim.keymap.set('n', '<leader>fS', '<cmd>Telescope symbols<cr>', opts),
-		vim.keymap.set('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts),
+		-- vim.keymap.set('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts),
 		vim.keymap.set('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts),
-		vim.keymap.set('n', '<leader>p', '<cmd>Telescope projects<cr>', opts),
+		-- vim.keymap.set('n', '<leader>p', '<cmd>Telescope projects<cr>', opts),
 	}
 }

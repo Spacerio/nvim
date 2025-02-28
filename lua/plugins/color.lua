@@ -27,7 +27,8 @@ return {
 		if transparent then
 			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
+			vim.api.nvim_set_hl(0, "NormalFloat", {bg= "none" })
+			-- vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
 			vim.api.nvim_set_hl(0, "LazyNormal", {bg="#1E1E2E"})
 			vim.api.nvim_set_hl(0, "MasonNormal", {bg="#1E1E2E"})
 		end
