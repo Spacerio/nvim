@@ -6,6 +6,7 @@ local config = function()
 	-- }
 
 	-- local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
 	-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 	local lsp_remaps = function(bufnr)
