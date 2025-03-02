@@ -91,8 +91,8 @@ map('n', '<C-u>', '<C-u>zz', opts)
 -- map('n', '<M-j><M-y>', ':lua require("harpoon.term").gotoTerminal(2)<cr>', opts)
 
 --Project switcher
-map('n', '<leader>or', ':tabe<cr>:cd ~/AppData/Local/nvim<cr>:Telescope find_files<cr>', opts)
-map('n', '<leader>on', ':tabe<cr>:cd ~/Documents/Notes<cr>:Telescope find_files<cr>', opts)
+-- map('n', '<leader>or', ':tabe<cr>:cd ~/AppData/Local/nvim<cr>:Telescope find_files<cr>', opts)
+-- map('n', '<leader>on', ':tabe<cr>:cd ~/Documents/Notes<cr>:Telescope find_files<cr>', opts)
 
 -- -- Dap keymaps
 -- map('n', '<leader>B', ':lua require("dap").toggle_breakpoint()<cr>', opts)
