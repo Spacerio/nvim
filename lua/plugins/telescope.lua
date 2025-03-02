@@ -55,7 +55,7 @@ return {
 	config = config,
 
 	keys = {
-		vim.keymap.set("n", "<C-p>", require("util.find").my_find_files, opts),
+		vim.keymap.set("n", "<leader><space>", require("util.find").my_find_files, opts),
 		vim.keymap.set('n', '<leader>fg', require("util.find").grep, opts),
 		vim.keymap.set('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true root_dir="~"<cr>', opts),
 		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope fd<cr>", {noremap = true, silent = true}),

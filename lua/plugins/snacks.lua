@@ -27,7 +27,7 @@ return {
 	},
 
 	keys = {
-		{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+		{ "<C-p>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 		{ "<leader>ss", function() Snacks.picker() end, desc = "Picker picker" },
 		-- git
 		{ "<leader>gc", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
