@@ -2,9 +2,15 @@ return {
 	"stevearc/oil.nvim",
 	lazy = false,
 	opts = {
+		view_options = {
+			show_hidden = false,
+		},
 		keymaps = {
 			["<C-p>"] = false,
 			["<M-p>"] = "actions.preview",
+			["gp"] = function ()
+				require("oil").set_columns({ "permissions", "size", "icon", "name"})
+			end
 		}
 	},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
