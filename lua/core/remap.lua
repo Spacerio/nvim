@@ -239,7 +239,4 @@ map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 -- map("n", "<C-p>", project_files, opts)
 map("n", "<leader>l", "<cmd>Lazy<cr>", opts)
 
-local M = {}
-M.opts = opts
-M.BindMake = function() map('n', '<cr>', '<cmd>make<cr>', opts) end
-return M
+map('n', '<cr>', '<cmd>make<cr>', opts)
