@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	priority = 1000,
 	config = function()
-		local transparent = true
+		local transparent = false
 		transparent = transparent and not vim.g.neovide
 		require('catppuccin').setup({
 			flavour = "mocha",
