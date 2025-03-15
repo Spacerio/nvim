@@ -13,17 +13,26 @@ return {
 			},
 			version = "*",
 		},
+		{
+            'Kaiser-Yang/blink-cmp-dictionary',
+            dependencies = { 'nvim-lua/plenary.nvim' }
+        },
 	},
 	opts = {
 		snippets = { preset = "luasnip" },
 		sources = {
 			-- compat = {},
-			default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+			default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'dictionary' },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100, -- show at a higher priority than lsp
+				},
+				dictionary = {
+					name = "Dict",
+					module = "blink-cmp-dictionary",
+					min_keyword_length = 3
 				}
 			}
 		},
