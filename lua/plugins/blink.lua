@@ -22,13 +22,14 @@ return {
 		snippets = { preset = "luasnip" },
 		sources = {
 			-- compat = {},
-			default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev', 'dictionary' },
+			default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100, -- show at a higher priority than lsp
 				},
+				-- Doesn't work without spell file
 				dictionary = {
 					name = "Dict",
 					module = "blink-cmp-dictionary",
