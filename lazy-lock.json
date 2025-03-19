@@ -54,5 +54,6 @@
   "vim-tmux-navigator": { "branch": "master", "commit": "791dacfcfc8ccb7f6eb1c853050883b03e5a22fe" },
   "vim-workman": { "branch": "master", "commit": "ffc5b46fe9c32637bc9f4385db0f5f7a54520dfb" },
   "vimtex": { "branch": "master", "commit": "691ee15e1459e4420d207cfbc4a79b383f32b411" },
-  "volt": { "branch": "main", "commit": "21a2351697abfed26d4469b88d3ab124d55a1b3f" }
+  "volt": { "branch": "main", "commit": "21a2351697abfed26d4469b88d3ab124d55a1b3f" },
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }

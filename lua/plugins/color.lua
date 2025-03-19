@@ -22,6 +22,7 @@ return { -- TODO: figure out a better way to manage colorschemes
 				notify = true,
 				neotree = true,
 				blink_cmp = true,
+				which_key = true,
 				flash = true,
 			}
 		})

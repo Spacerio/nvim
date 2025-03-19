@@ -2,6 +2,9 @@ local opts = { noremap = true, silent = true }
 local remap = { silent = true }
 
 local map = vim.keymap.set
+local desc = function (str)
+	return vim.tbl_deep_extend("force", opts, { desc = str })
+end
 
 map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -112,10 +115,10 @@ map('n', '<C-u>', '<C-u>zz', opts)
 -- map('n', '<leader>q', '<cmd>SessionsSave<cr><cmd>qa!<cr>', opts)
 
 --Format on keymap
-map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
+map('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', desc("Format buffer"))
 
 -- Delete other buffers
-map('n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', opts)
+map( 'n', '<leader>D', ':mark t | w | %bd | e# | bd# <cr> `t', desc("Delete other buffers"))
 
 -- --Telescope
 -- themes = require('telescope.themes')
