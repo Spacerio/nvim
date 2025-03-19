@@ -239,4 +239,4 @@ map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 -- map("n", "<C-p>", project_files, opts)
 map("n", "<leader>l", "<cmd>Lazy<cr>", opts)
 
-map('n', '<cr>', '<cmd>make<cr>', opts)
+map('n', '+', '<cmd>make<cr>', opts)
