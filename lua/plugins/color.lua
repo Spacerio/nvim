@@ -1,4 +1,4 @@
-return {
+return { -- TODO: figure out a better way to manage colorschemes
 	'catppuccin/nvim',
 	name = "catppuccin",
 	lazy = false,
@@ -22,6 +22,7 @@ return {
 				notify = true,
 				neotree = true,
 				blink_cmp = true,
+				flash = true,
 			}
 		})
 		vim.cmd.colorscheme("catppuccin")
@@ -33,5 +34,6 @@ return {
 			vim.api.nvim_set_hl(0, "LazyNormal", {bg="#1E1E2E"})
 			vim.api.nvim_set_hl(0, "MasonNormal", {bg="#1E1E2E"})
 		end
+		vim.api.nvim_set_hl(0, "FlashLabel", { bg = "#FF00FF" })
 	end
 }

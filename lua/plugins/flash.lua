@@ -4,8 +4,7 @@ return {
 	opts = {
 		modes = {
 			search = {
-				enabled = false,
-				highlight = { backdrop = true }
+				enabled = true
 			},
 			char = {
 				enabled = false,
