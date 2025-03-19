@@ -46,12 +46,6 @@ return {
 		event = "VeryLazy",
 		opts = {}
 	},
-	-- { -- this breaks telescope through plenary somehow?
-	--    "m4xshen/hardtime.nvim",
-	-- 	event = "VeryLazy",
-	--    -- dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	--    opts = {}
-	-- },
 	{
 		'chrisgrieser/nvim-spider',
 		keys = {
@@ -59,5 +53,11 @@ return {
 			{ "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
 			{ "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
 		},
+	},
+	{ -- this breaks telescope through plenary somehow?
+		"m4xshen/hardtime.nvim",
+		event = "VeryLazy",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {}
 	},
 }
