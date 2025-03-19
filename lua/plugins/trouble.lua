@@ -1,26 +1,24 @@
 return {
 	'folke/trouble.nvim',
 	cmd = { "Trouble", "TroubleToggle" },
-	branch = "dev",
-	config = function()
-		require("trouble").setup({
-			focus = true,
-			follow = true,
-			modes = {
-				show = {
-					mode = "diagnostics",
-					preview = {
-						type = "split",
-						relative = "win",
-						position = "right",
-						size = 0.3,
-					},
+	opts = {
+		focus = true,
+		follow = true,
+		modes = {
+			show = {
+				mode = "diagnostics",
+				preview = {
+					type = "split",
+					relative = "win",
+					position = "right",
+					size = 0.3,
 				},
 			},
-		})
-	end,
+		},
+	},
 	keys = {
-		{ "gl", "<cmd>TroubleToggle document_diagnostics<cr>", silent = true, noremap = true},
+		-- TODO: add leader binds for other functions
+		{ "gl", "<cmd>Trouble diagnostics toggle<cr>", silent = true, noremap = true},
 	}
 }
 
