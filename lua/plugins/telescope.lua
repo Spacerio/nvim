@@ -10,7 +10,6 @@ local config = function()
 	-- require("telescope").load_extension("harpoon")
 	-- require("telescope").load_extension("lazygit")
 	-- require("telescope").load_extension("ui-select")
-	require("telescope").load_extension("file_browser")
 	-- require("telescope").load_extension("zoxide")
 	require("telescope").load_extension("opener")
 	-- require("telescope").load_extension("neoclip")
@@ -30,7 +29,6 @@ return {
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'jvgrootveld/telescope-zoxide',
-		'nvim-telescope/telescope-file-browser.nvim',
 		'nvim-telescope/telescope-ui-select.nvim',
 		'nvim-telescope/telescope-symbols.nvim',
 		'nvim-telescope/telescope-project.nvim',
@@ -77,7 +75,6 @@ return {
 		vim.keymap.set('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts),
 		vim.keymap.set('n', '<leader>fS', '<cmd>Telescope symbols<cr>', opts),
 		-- vim.keymap.set('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts),
-		vim.keymap.set('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts),
 		vim.keymap.set('n', '<leader>fp', '<cmd>Telescope project<cr>', opts),
 	}
 }
