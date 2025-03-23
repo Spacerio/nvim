@@ -19,8 +19,6 @@ vim.g.mapleader = " "
 map('i', '<C-BS>', '<C-w>', opts)
 
 --Buffer navigation
-map('n', ']b', ':bn<cr>', opts)
-map('n', '[b', ':bp<cr>', opts)
 map('n', '<M-l>', '<C-^>', opts)
 
 --Emacs-like insert navigation
