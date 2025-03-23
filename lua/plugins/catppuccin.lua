@@ -1,14 +1,13 @@
-return { -- TODO: figure out a better way to manage colorschemes
+local theme = require("core/color")
+return {
 	'catppuccin/nvim',
 	name = "catppuccin",
-	lazy = false,
+	lazy = theme.colorscheme ~= "catppuccin",
 	priority = 1000,
 	config = function()
-		local transparent = false
-		transparent = transparent and not vim.g.neovide
 		require('catppuccin').setup({
 			flavour = "mocha",
-			transparent_background = transparent,
+			transparent_background = theme.transparent,
 			no_italic = false,
 			dim_inactive = {
 				enabled = true,
@@ -26,15 +25,5 @@ return { -- TODO: figure out a better way to manage colorschemes
 				flash = true,
 			}
 		})
-		vim.cmd.colorscheme("catppuccin")
-		if transparent then
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", {bg= "none" })
-			-- vim.api.nvim_set_hl(0, "NormalFloat", {bg="#1E1E2E"})
-			vim.api.nvim_set_hl(0, "LazyNormal", {bg="#1E1E2E"})
-			vim.api.nvim_set_hl(0, "MasonNormal", {bg="#1E1E2E"})
-		end
-		vim.api.nvim_set_hl(0, "FlashLabel", { bg = "#FF00FF" })
 	end
 }
