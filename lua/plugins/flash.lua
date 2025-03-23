@@ -2,9 +2,10 @@ return {
 	"folke/flash.nvim",
 	event = "VeryLazy",
 	opts = {
+		autohide = false,
 		modes = {
 			search = {
-				enabled = true
+				enabled = true,
 			},
 			char = {
 				enabled = false,
