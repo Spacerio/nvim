@@ -5,7 +5,7 @@ return {
 		autohide = false,
 		modes = {
 			search = {
-				enabled = true,
+				enabled = false,
 			},
 			char = {
 				enabled = false,
