@@ -1,5 +1,5 @@
 local config = function()
-	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "nixd", "nil_ls", "csharp_ls" },
+	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "nixd", "nil_ls", "csharp_ls" }
 	require('mason').setup()
 	-- require("mason-lspconfig").setup {
 	-- 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
@@ -11,23 +11,10 @@ local config = function()
 
 	local lsp_remaps = function(bufnr)
 		local opts = { remap = true, silent = true, buffer = bufnr }
-		vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-		vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-		vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-		vim.keymap.set('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-		vim.keymap.set('n', 'gO', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-		vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-		vim.keymap.set('n', 'ga', '<cmd>Telescope treesitter<cr>', opts)
-		vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-		vim.keymap.set('x', 'gs', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts)
-		-- vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_document_symbols<cr>', opts)
-		-- Diagnostics
-		-- vim.keymap.set('n', 'gl', '<cmd>TroubleToggle<cr>', opts)
-		vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-		vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-		vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
-		vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
+		-- TODO: figure out a better way to do this
+		-- or only show diagnostics on the current line
+		vim.keymap.set('n', '[ov', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
+		vim.keymap.set('n', ']ov', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
 	end
 
 	local function lsp_attach(client, bufnr)
@@ -74,7 +61,9 @@ local config = function()
 	end
 
 	vim.diagnostic.config({
-		virtual_text = true,
+		virtual_text = {
+			virt_text_pos = 'eol_right_align'
+		},
 		signs = {
 			active = signs,
 		},

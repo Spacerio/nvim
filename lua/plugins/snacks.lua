@@ -68,6 +68,12 @@ return {
 		{ "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 		{ "<leader>sC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
 		{ "<leader>sn", function() Snacks.notifier.show_history() end, desc = "Colorschemes" },
+		-- LSP
+		{ "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+		{ "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
+		{ "gs", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+		{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+
 		-- Other
 		{ "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
 		{ "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
