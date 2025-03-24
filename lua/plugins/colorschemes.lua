@@ -1,20 +1,5 @@
 local theme = require("core/color")
-table.foreach({}, function ()
-	
-end)
 return {
-	{
-		'AlphaTechnolog/pywal.nvim',
-		lazy = theme.colorscheme ~= "pywal",
-		priority = 1000,
-	},
-	{
-
-		"folke/tokyonight.nvim",
-		lazy = theme.colorscheme ~= "tokyonight",
-		priority = 1000,
-		opts = { style = "moon" },
-	},
 	{
 		'catppuccin/nvim',
 		name = "catppuccin",
@@ -42,5 +27,48 @@ return {
 				}
 			})
 		end
-	}
+	},
+	{
+		'AlphaTechnolog/pywal.nvim',
+		lazy = theme.colorscheme ~= "pywal",
+		priority = 1000,
+	},
+	{
+
+		"folke/tokyonight.nvim",
+		lazy = theme.colorscheme ~= "tokyonight",
+		priority = 1000,
+		opts = { style = "moon" },
+	},
+	{
+		'EdenEast/nightfox.nvim',
+		lazy = theme.colorscheme ~= "nightfox",
+		priority = 1000,
+	},
+	{
+		'navarasu/onedark.nvim',
+		lazy = theme.colorscheme ~= "onedark",
+		priority = 1000,
+	},
+	{
+		'sainnhe/everforest',
+		lazy = theme.colorscheme ~= "everforest",
+		priority = 1000,
+	},
+	{
+		'scottmckendry/cyberdream.nvim',
+		lazy = theme.colorscheme ~= "cyberdream",
+		priority = 1000,
+	},
+	{
+		'sainnhe/edge',
+		lazy = theme.colorscheme ~= "edge",
+		priority = 1000,
+	},
+	{
+		'rose-pine/neovim',
+		name = 'rose-pine',
+		lazy = theme.colorscheme ~= "rose-pine",
+		priority = 1000,
+	},
 }
