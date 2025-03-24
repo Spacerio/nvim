@@ -4,4 +4,4 @@
 * fix sign_define error
 * markdown preview
 * latex
-* lush.nvim
+* update lsp to nvim 0.11

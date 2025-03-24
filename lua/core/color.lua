@@ -1,7 +1,5 @@
 local M = {}
 
--- TODO: add support for pywal generated themes
-
 M.colorscheme = "catppuccin"
 M.transparent = false
 

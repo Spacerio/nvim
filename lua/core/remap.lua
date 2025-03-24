@@ -57,6 +57,8 @@ map('n', '\'', '`', opts)
 map('n', '<C-d>', '<C-d>zz', opts)
 map('n', '<C-u>', '<C-u>zz', opts)
 
+-- TODO: convert to neovim upstream equivalents
+
 -- -- Luasnip select
 -- map("i", "<M-n>", "<Plug>luasnip-next-choice", opts)
 -- map("s", "<M-n>", "<Plug>luasnip-next-choice", opts)
