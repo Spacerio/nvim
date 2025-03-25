@@ -10,7 +10,7 @@ return {
 		-- 	changedelete = {text = "▎"},
 		-- },
 		signcolumn = true,
-		numhl = true,
+		numhl = false,
 		linehl = false,
 		word_diff = false,
 		watch_gitdir = {
