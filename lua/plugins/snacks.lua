@@ -30,6 +30,8 @@ return {
 	keys = {
 		{ "<C-p>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 		{ "<leader>ss", function() Snacks.picker() end, desc = "Picker picker" },
+		{ "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+		{ "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 		-- git
 		{ "<leader>gc", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
 		{ "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
