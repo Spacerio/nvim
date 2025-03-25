@@ -22,9 +22,10 @@ local config = function()
 end
 local opts = {noremap = true, silent = true}
 
-return {
+-- NOTE: returning empy table
+return {} or {
 	'nvim-telescope/telescope.nvim',
-	-- event = "VeryLazy",
+	enabled = false,
 	cmd = "Telescope",
 	dependencies = {
 		'nvim-lua/plenary.nvim',
