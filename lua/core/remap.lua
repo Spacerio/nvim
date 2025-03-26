@@ -112,3 +112,4 @@ map('n', '<leader>T', ':vs<cr>:terminal<cr>i', opts)
 -- map('n', '<leader>ci', '<cmd>CompetiTest <cr>', opts)
 
 map('n', '+', '<cmd>make<cr>', opts)
+map('n', '<leader><cr>', '<cmd>make<cr>', opts)
