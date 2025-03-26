@@ -2,21 +2,26 @@ return {
 	'saghen/blink.cmp',
 	version = '*',
 	dependencies = {
-		"L3MON4D3/LuaSnip",
-		version = 'v2.*',
-		dependencies = { "rafamadriz/friendly-snippets" },
+		{
+			"L3MON4D3/LuaSnip",
+			version = 'v3.*',
+			config = function ()
+				require("util.snip")
+			end,
+			dependencies = { "rafamadriz/friendly-snippets" },
+		},
 
 		{
 			"saghen/blink.compat",
 			opts = {
-				  impersonate_nvim_cmp = true,
+				impersonate_nvim_cmp = true,
 			},
 			version = "*",
 		},
 		{
-            'Kaiser-Yang/blink-cmp-dictionary',
-            dependencies = { 'nvim-lua/plenary.nvim' }
-        },
+			'Kaiser-Yang/blink-cmp-dictionary',
+			dependencies = { 'nvim-lua/plenary.nvim' }
+		},
 	},
 	opts = {
 		snippets = { preset = "luasnip" },
@@ -68,7 +73,6 @@ return {
 				function(cmp)
 					return cmp.select_and_accept()
 				end,
-				'snippet_forward',
 				'fallback'
 			},
 			['<C-n>'] = { 'show', 'select_next', 'fallback' },
@@ -90,7 +94,7 @@ return {
 						-- auto_insert = false,
 					},
 				},
-				menu = { auto_show = function() return vim.fn.getcmdtype() == ':' end}
+				menu = { auto_show = function() return vim.fn.getcmdtype() == ':' end }
 			},
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" }
