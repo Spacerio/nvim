@@ -34,9 +34,6 @@ return {
 					module = "lazydev.integrations.blink",
 					score_offset = 100, -- show at a higher priority than lsp
 				},
-				snippets = {
-					score_offset = 50,
-				},
 				-- Doesn't work without spell file
 				dictionary = {
 					name = "Dict",
