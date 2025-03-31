@@ -1,5 +1,5 @@
 local config = function()
-	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "nixd", "nil_ls", "csharp_ls" }
+	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "glsl_analyzer", "nixd", "nil_ls", "csharp_ls" }
 	require('mason').setup()
 	-- require("mason-lspconfig").setup {
 	-- 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
