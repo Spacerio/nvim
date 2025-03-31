@@ -6,12 +6,12 @@ return {
 		lazy = false,
 		config = true,
 	},
-	{
-		'echasnovski/mini.surround',
-		version = false,
-		lazy = false,
-		config = true
-	},
+	-- {
+	-- 	'echasnovski/mini.surround',
+	-- 	version = false,
+	-- 	lazy = false,
+	-- 	config = true
+	-- },
 	{
 		'echasnovski/mini.splitjoin',
 		version = false,
