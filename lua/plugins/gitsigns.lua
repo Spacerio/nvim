@@ -28,7 +28,9 @@ return {
 		trouble = true,
 	},
 	keys = {
-		vim.keymap.set("n", "gk", "<cmd>Gitsigns toggle_current_line_blame<cr>", {silent = true}),
-		vim.keymap.set("n", "gK", "<cmd>Gitsigns blame_line<cr>", {silent = true}),
+		{ "gk", "<cmd>Gitsigns toggle_current_line_blame<cr>" },
+		{ "gK", "<cmd>Gitsigns blame_line<cr>" },
+		{ "gh", "<cmd>Gitsigns stage_hunk<cr>" },
+		{ "gH", "<cmd>Gitsigns undo_stage_hunk<cr>" },
 	}
 }
