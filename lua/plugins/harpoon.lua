@@ -1,20 +1,21 @@
 return {
 	'theprimeagen/harpoon',
+	enabled = false,
 	event = "VeryLazy",
-	keys = function()
-		local opts = {noremap = true, silent = true}
-		vim.keymap.set('n', '<M-j>i', ':lua require("harpoon.mark").add_file()<cr>', opts)
-		vim.keymap.set('n', '<M-u>', ':lua require("harpoon.ui").toggle_quick_menu()<cr>', opts)
-		vim.keymap.set('n', '<M-y>', ':lua require("harpoon.cmd-ui").toggle_quick_menu()<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-a>', ':lua require("harpoon.ui").nav_file(1)<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-s>', ':lua require("harpoon.ui").nav_file(2)<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-d>', ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-f>', ':lua require("harpoon.ui").nav_file(4)<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-j>', ':lua require("harpoon.ui").nav_file(5)<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-k>', ':lua require("harpoon.ui").nav_file(6)<cr>', opts)
-		vim.keymap.set('n', '<M-j><M-l>', ':lua require("harpoon.ui").nav_file(7)<cr>', opts)
-		vim.keymap.set('n', "<M-o>", function()
-			require("harpoon.ui").nav_file(vim.v.count)
-		end, opts)
-	end
+	branch = "harpoon2",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	config = true,
+	keys = {
+		{ "<leader>a", function() require("harpoon"):list():add() end, desc = ""},
+		{ "<M-u>", function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = ""},
+		{ "<leader>1", function() require("harpoon"):list():select(1) end, desc = "harpoon buffer 1"},
+		{ "<leader>2", function() require("harpoon"):list():select(2) end, desc = "harpoon buffer 2"},
+		{ "<leader>3", function() require("harpoon"):list():select(3) end, desc = "harpoon buffer 3"},
+		{ "<leader>4", function() require("harpoon"):list():select(4) end, desc = "harpoon buffer 4"},
+		{ "<leader>5", function() require("harpoon"):list():select(5) end, desc = "harpoon buffer 5"},
+		{ "<leader>6", function() require("harpoon"):list():select(6) end, desc = "harpoon buffer 6"},
+		{ "<leader>7", function() require("harpoon"):list():select(7) end, desc = "harpoon buffer 7"},
+		{ "<leader>8", function() require("harpoon"):list():select(8) end, desc = "harpoon buffer 8"},
+		{ "<leader>9", function() require("harpoon"):list():select(9) end, desc = "harpoon buffer 9"},
+	}
 }

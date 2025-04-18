@@ -1,32 +1,20 @@
 local config = function()
-	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "nil_ls" },
+	local ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd", "glsl_analyzer", "nixd", "nil_ls", "csharp_ls" }
 	require('mason').setup()
 	-- require("mason-lspconfig").setup {
 	-- 	ensure_installed = { "lua_ls", "rust_analyzer", "bashls", "clangd" },
 	-- }
 
-	local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+	-- local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local lsp_capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 	-- lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
 	local lsp_remaps = function(bufnr)
 		local opts = { remap = true, silent = true, buffer = bufnr }
-		vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-		vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-		vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-		vim.keymap.set('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-		vim.keymap.set('n', 'gO', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-		vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-		vim.keymap.set('n', 'ga', '<cmd>Telescope treesitter<cr>', opts)
-		vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-		vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-		vim.keymap.set('x', 'gs', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts)
-		-- vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_document_symbols<cr>', opts)
-		-- Diagnostics
-		-- vim.keymap.set('n', 'gl', '<cmd>TroubleToggle<cr>', opts)
-		vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-		vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-		vim.keymap.set('n', '[v', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
-		vim.keymap.set('n', ']v', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
+		-- TODO: figure out a better way to do this
+		-- or only show diagnostics on the current line
+		vim.keymap.set('n', '[ov', '<cmd>lua vim.diagnostic.config{virtual_text=false}<cr>', opts)
+		vim.keymap.set('n', ']ov', '<cmd>lua vim.diagnostic.config{virtual_text=true}<cr>', opts)
 	end
 
 	local function lsp_attach(client, bufnr)
@@ -73,7 +61,9 @@ local config = function()
 	end
 
 	vim.diagnostic.config({
-		virtual_text = true,
+		virtual_text = {
+			virt_text_pos = 'eol_right_align'
+		},
 		signs = {
 			active = signs,
 		},
@@ -107,15 +97,20 @@ return { 'neovim/nvim-lspconfig',
 					-- See the configuration section for more details
 					-- Load luvit types when the `vim.uv` word is found
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+					{ path = "snacks.nvim" , words = { "Snacks" } }
 				},
 			},
 		},
 
 		{
 			"ray-x/lsp_signature.nvim",
-			event = "VeryLazy",
+			event = "InsertEnter",
 			opts = {
-				floating_window = false,
+				bind = true,
+				floating_window = true,
+				handler_opts = {
+					border = "rounded"
+				}
 			},
 		}
 	},

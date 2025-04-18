@@ -10,7 +10,6 @@ local config = function()
 	-- require("telescope").load_extension("harpoon")
 	-- require("telescope").load_extension("lazygit")
 	-- require("telescope").load_extension("ui-select")
-	require("telescope").load_extension("file_browser")
 	-- require("telescope").load_extension("zoxide")
 	require("telescope").load_extension("opener")
 	-- require("telescope").load_extension("neoclip")
@@ -23,14 +22,14 @@ local config = function()
 end
 local opts = {noremap = true, silent = true}
 
-return {
+-- NOTE: returning empy table
+return {} or {
 	'nvim-telescope/telescope.nvim',
-	-- event = "VeryLazy",
+	enabled = false,
 	cmd = "Telescope",
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		'jvgrootveld/telescope-zoxide',
-		'nvim-telescope/telescope-file-browser.nvim',
 		'nvim-telescope/telescope-ui-select.nvim',
 		'nvim-telescope/telescope-symbols.nvim',
 		'nvim-telescope/telescope-project.nvim',
@@ -55,7 +54,7 @@ return {
 	config = config,
 
 	keys = {
-		vim.keymap.set("n", "<C-p>", require("util.find").my_find_files, opts),
+		vim.keymap.set("n", "<leader><space>", require("util.find").my_find_files, opts),
 		vim.keymap.set('n', '<leader>fg', require("util.find").grep, opts),
 		vim.keymap.set('n', '<leader>fo', '<cmd>Telescope opener hidden=false respect_gitignore=true root_dir="~"<cr>', opts),
 		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope fd<cr>", {noremap = true, silent = true}),
@@ -77,7 +76,6 @@ return {
 		vim.keymap.set('n', '<leader>fl', '<cmd>Telescope neoclip<cr>', opts),
 		vim.keymap.set('n', '<leader>fS', '<cmd>Telescope symbols<cr>', opts),
 		-- vim.keymap.set('n', '<leader>z', '<cmd>lua require("telescope").extensions.zoxide.list({})<cr>', opts),
-		vim.keymap.set('n', '<leader>b', '<cmd>Telescope file_browser hidden=true<cr>', opts),
 		vim.keymap.set('n', '<leader>fp', '<cmd>Telescope project<cr>', opts),
 	}
 }

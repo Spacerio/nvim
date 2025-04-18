@@ -4,7 +4,7 @@ local config = function()
 	ts.setup({
 		auto_install = true,
 		ensure_installed = { "rust", "lua", "help", "c", "cpp", "org", }, -- one of "all" or a list of languages
-		ignore_install = { "help" }, -- List of parsers to ignore installing
+		ignore_install = { "help", "org" }, -- List of parsers to ignore installing
 		highlight = {
 			enable = true, -- false will disable the whole extension
 			-- disable = { "markdown" }, -- list of language that will be disabled

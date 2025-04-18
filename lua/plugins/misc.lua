@@ -17,7 +17,7 @@ return {
 		},
 		cmd = "Neotree",
 		keys = {
-			{ "<leader>e", "<cmd>Neotree<cr>", silent = true, noremap = true}
+			{ "<leader>e", "<cmd>Neotree toggle<cr>", silent = true, noremap = true}
 		}
 	},
 	{
@@ -47,16 +47,19 @@ return {
 		opts = {}
 	},
 	{
-		"nvim-zh/colorful-winsep.nvim",
-		event = { "WinLeave" },
-		opts = {
-			smooth = false,
-		}
+		'chrisgrieser/nvim-spider',
+		enabled = false, -- TODO: figure out how to disable for cw, de, etc.
+		keys = {
+			{ "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" } },
+			{ "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" } },
+			{ "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" } },
+		},
 	},
-	-- { -- this breaks telescope through plenary somehow?
-	--    "m4xshen/hardtime.nvim",
-	-- 	event = "VeryLazy",
-	--    -- dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	--    opts = {}
-	-- },
+	{
+		"m4xshen/hardtime.nvim",
+		enabled = false,
+		event = "VeryLazy",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {}
+	},
 }

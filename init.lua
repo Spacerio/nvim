@@ -25,7 +25,7 @@ local opts = {
 		lazy = true
 	},
 	install = {
-		colorscheme = { "catpuccin" }
+		colorscheme = { "catppuccin" }
 	},
 	change_detection = {
 		notify = false

@@ -1,5 +1,26 @@
 local M = {}
 
+-- FzfLua
+M.directories = function()
+	local excludes = ".git node_module .cache .npm .mozilla .meteor .nv"
+	local cmd = "fd --type d --hidden "
+	for _, e in ipairs(vim.split(excludes, " ")) do
+		cmd = cmd .. "--exclude " .. e .. " "
+	end
+	require('fzf-lua').files({
+		cmd = cmd,
+		winopts = {
+			preview = {
+				hidden = true,
+			},
+			height = 0.45,
+			width = 0.45
+		},
+	})
+end
+
+
+-- Telescope
 local is_inside_work_tree = {}
 M.project_files = function(opts)
 	-- local opts = { compact_dropdown }
