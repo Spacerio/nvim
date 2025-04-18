@@ -1,5 +1,7 @@
 vim.g.neovide_fullscreen = true
 vim.g.neovide_scale_factor = 0.8
+vim.g.neovde_hide_cursor_while_typing = true
+-- neovide_profiler to enable frametime display
 
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
