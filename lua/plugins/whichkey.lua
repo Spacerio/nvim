@@ -7,6 +7,7 @@ return {
 			spec = {
 				{
 					mode = { "n", "v" },
+					{ "<leader>o", group = "org", icon = " " },
 					{ "<leader><tab>", group = "tabs" },
 					{ "<leader>c", group = "code" },
 					{ "<leader>d", group = "debug" },

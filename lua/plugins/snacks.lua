@@ -76,7 +76,8 @@ return {
 		{ "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
 		{ "gs",         function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
 		{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-
+		-- Org
+		{ "<leader>of", function() Snacks.picker.files({cwd = "~/org"}) end, desc = "Org agenda files"},
 		-- Other
 		{ "<leader>z",  function() Snacks.zen() end,                          desc = "Toggle Zen Mode" },
 		{ "<leader>Z",  function() Snacks.zen.zoom() end,                     desc = "Toggle Zoom" },
