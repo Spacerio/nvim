@@ -28,11 +28,19 @@ return {
 		sources = {
 			-- compat = {},
 			default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+			per_filetype = {
+				org = { 'orgmode' },
+			},
 			providers = {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100, -- show at a higher priority than lsp
+				},
+				orgmode = {
+					name = "Orgmode",
+					module = "orgmode.org.autocompletion.blink",
+					fallbacks = { "buffer" },
 				},
 				-- Doesn't work without spell file
 				dictionary = {
