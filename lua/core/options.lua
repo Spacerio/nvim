@@ -3,7 +3,7 @@ local opts = {
 	-- clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
 	cmdheight = 2,                           -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-	conceallevel = 0,                        -- so that `` is visible in markdown files
+	conceallevel = 2,                        -- so that `` is visible in markdown files
 	fileencoding = "utf-8",                  -- the encoding written to a file
 	hlsearch = false,                        -- highlight all matches on previous search pattern
 	incsearch = true,						 -- help with searches
@@ -31,14 +31,15 @@ local opts = {
 	cursorlineopt = "number",
 	number = true,                           -- set numbered lines
 	relativenumber = true,                   -- set relative numbered lines
-	numberwidth = 4,                         -- set number column width to 2 {default 4}
+	numberwidth = 2,                         -- set number column width to 2 {default 4}
 
 	signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
 	wrap = false,                            -- display lines as one long line
-	scrolloff = 8,                          -- is one of my fav
+	scrolloff = 8,                           -- is one of my fav
 	sidescrolloff = 8,
 	-- guifont = "monospace:h17",               -- the font used in graphical neovim applications
-	shortmess = "filnxtToOF", 				--Remove C to show amount of search results 
+	shortmess = "filnxtToOF", 				 --Remove C to show amount of search results 
+	foldlevelstart = 99,
 }
 
 for k, v in pairs(opts) do
@@ -54,7 +55,6 @@ if vim.g.neovide then
 		{ pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
 	)
 end
-
 
 -- check if running on linux
 vim.g.os = vim.loop.os_uname().sysname
