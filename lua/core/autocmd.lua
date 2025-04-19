@@ -9,6 +9,17 @@ vim.filetype.add({
 	}
 })
 
+-- Open neovide on windows at desktop, always
+if vim.g.neovide and vim.g.os ~= 'Linux' then
+	local os = require("os")
+	local path_to_desktop = os.getenv("USERPROFILE") .. "\\Desktop"
+	local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
+	vim.api.nvim_create_autocmd(
+		{"VimEnter"},
+		{ pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
+	)
+end
+
 -- local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
 --
 -- if not vim.fn.has('linux') then
