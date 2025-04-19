@@ -36,6 +36,12 @@ map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 
+-- Tab navigation
+map('n', ']<tab>', 			'<cmd>tabn<cr>', { desc = "next tab" })
+map('n', '[<tab>', 			'<cmd>tabp<cr>', { desc = "previous tab" })
+map('n', '<leader><tab>c', 	'<cmd>tabc<cr>', { desc = "close tab" })
+map('n', '<leader><tab>c', 	'<cmd>tabn<cr>', { desc = "new tab" })
+
 -- map ö to ;
 map('n', 'ö', ';', opts)
 map('n', 'Ö', ':', {})
