@@ -16,6 +16,11 @@ vim.api.nvim_create_autocmd("User", {
 			vim.api.nvim_set_hl(0, "MasonNormal", { bg = "#1E1E2E" })
 		end
 		vim.api.nvim_set_hl(0, "FlashLabel", { bg = "#FF00FF" })
+		-- Make lsp.diagnostic underlines curly
+		local hl_groups = { 'DiagnosticUnderlineError', 'DiagnosticUnderlineWarn' }
+		for _, hl in ipairs(hl_groups) do
+			vim.cmd.highlight(hl .. ' gui=undercurl')
+		end
 	end,
 })
 
