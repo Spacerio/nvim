@@ -105,6 +105,7 @@ return { 'neovim/nvim-lspconfig',
 		{
 			"ray-x/lsp_signature.nvim",
 			event = "InsertEnter",
+			enabled = false, -- Blink.cmp does the same thing now
 			opts = {
 				bind = true,
 				floating_window = true,
